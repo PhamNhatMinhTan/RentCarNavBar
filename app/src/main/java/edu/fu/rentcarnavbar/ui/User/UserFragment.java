@@ -1,9 +1,11 @@
 package edu.fu.rentcarnavbar.ui.User;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +15,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import edu.fu.rentcarnavbar.R;
+import edu.fu.rentcarnavbar.ui.Invoke.InvokeFragment;
 
 public class UserFragment extends Fragment {
 
@@ -20,14 +23,23 @@ public class UserFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        userViewModel =
-                ViewModelProviders.of(this).get(UserViewModel.class);
+//        userViewModel =
+//                ViewModelProviders.of(this).get(UserViewModel.class);
         View root = inflater.inflate(R.layout.fragment_user, container, false);
+        final View root2 = inflater.inflate(R.layout.fragment_invoke, container, false);
         final TextView textView = root.findViewById(R.id.text_notifications);
-        userViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        /*userViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
+            }
+        });*/
+        textView.setText("My name ntk");
+        Button btn = root.findViewById(R.id.btnEdit);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //startActivity(new Intent(root., root2.getClass()));
             }
         });
         return root;
