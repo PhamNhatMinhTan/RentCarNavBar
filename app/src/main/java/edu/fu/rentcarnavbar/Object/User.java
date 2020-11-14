@@ -24,6 +24,12 @@ public class User {
         this.status = status;
     }
 
+    public User(String id, String name, String email) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+    }
+
     //Define constructor have not parameter
     public User() { }
 

@@ -12,17 +12,26 @@ import java.util.List;
 
 import edu.fu.rentcarnavbar.Object.User;
 
-class UserDAO extends DBOpenHepler {
+public class UserDAO extends DBOpenHepler {
+
+    SQLiteDatabase db;
 
     public UserDAO(@Nullable Context context) {
+
         super(context);
+
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        super.onCreate(db);
     }
 
     /**
      * The method to get all student from database and add to list
      * @return List data from table User in database
      */
-    public List<User> getAllStudent() {
+    public List<User> getAllUser() {
         //khoi tao list student
         List<User> list = new ArrayList<>();
         String sqlQuery = " SELECT * FROM user";
