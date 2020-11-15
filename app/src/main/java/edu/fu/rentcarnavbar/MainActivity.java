@@ -1,11 +1,13 @@
 package edu.fu.rentcarnavbar;
 
 import android.os.Bundle;
-import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.app.FragmentManager;
+
+import android.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -19,13 +21,7 @@ import edu.fu.rentcarnavbar.Model.GearDAO;
 import edu.fu.rentcarnavbar.Model.InvoiceDAO;
 import edu.fu.rentcarnavbar.Model.VehicleDAO;
 import edu.fu.rentcarnavbar.Model.VersionDAO;
-import edu.fu.rentcarnavbar.Object.Branch;
-import edu.fu.rentcarnavbar.Object.Color;
-import edu.fu.rentcarnavbar.Object.Fuel;
-import edu.fu.rentcarnavbar.Object.Gear;
-import edu.fu.rentcarnavbar.Object.Invoice;
-import edu.fu.rentcarnavbar.Object.Vehicle;
-import edu.fu.rentcarnavbar.Object.Version;
+import edu.fu.rentcarnavbar.ui.Invoice.DetailInvoiceFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     BranchDAO branch;
     VehicleDAO vehicleDAO;
     DBOpenHepler helper;
-
+    static FragmentManager manager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,10 +48,7 @@ public class MainActivity extends AppCompatActivity {
         vehicleDAO = new VehicleDAO(this);
         helper = new DBOpenHepler(this);
 
-        //insert default
-//        Invoice invoice1 = new Invoice("142/11/2020", "15/11/2020", 50, "Nguyen Minh Thao", "0868772887", "352506532", 1, "106846390997285914983", 2);
-//
-//        inv.InsertInvoice(invoice1);
+        manager = getFragmentManager();
 
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
@@ -63,6 +56,17 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+    }
+
+    public static void change(int invoice_Id){
+        DetailInvoiceFragment invoiceDetail = new DetailInvoiceFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt("invoiceId", invoice_Id);
+        invoiceDetail.setArguments(bundle);
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.nav_host_fragment, invoiceDetail);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
 }

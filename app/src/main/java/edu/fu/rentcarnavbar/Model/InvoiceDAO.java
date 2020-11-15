@@ -7,11 +7,14 @@ import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.Nullable;
 
+import com.google.android.material.internal.ContextUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import edu.fu.rentcarnavbar.Object.Invoice;
 import edu.fu.rentcarnavbar.Object.User;
+import edu.fu.rentcarnavbar.ui.Invoice.InvoiceFragment;
 
 public class InvoiceDAO extends DBOpenHepler{
 
@@ -33,6 +36,7 @@ public class InvoiceDAO extends DBOpenHepler{
     public InvoiceDAO(@Nullable Context context) {
         super(context);
     }
+
 
     public void InsertInvoice(Invoice invoice){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -69,5 +73,20 @@ public class InvoiceDAO extends DBOpenHepler{
         }
         return list;
 
+    }
+
+    public Invoice GetInvoiceById (int id){
+        List<Invoice> list = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+
+        Cursor cursor = null;
+        cursor = db.query(TABLE_NAME, null, "i_id = ?", new String[] {String.valueOf(id)}, null, null, null);
+
+        cursor.moveToFirst();
+        Invoice invoice = new Invoice(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getFloat(3),
+                cursor.getString(4), cursor.getString(5), cursor.getString(6),
+                cursor.getInt(7), cursor.getString(8), cursor.getInt(9));
+
+        return invoice;
     }
 }
