@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,11 +36,14 @@ public class UpdateProfileActivity extends AppCompatActivity implements GoogleAp
     UserDAO userDao;
 
     //declare widget
-    private ImageView avatar;
-    private TextView txtName;
-    private TextView txtEmail;
-    private TextView txtID;
-    private Button btnSignOut;
+    private TextView txtPhone;
+    private TextView txtIdentity;
+    private TextView txtAddress;
+    private EditText edtPhone;
+    private EditText edtIdentity;
+    private EditText edtAddress;
+    private Button btnBack;
+    private Button btnDone;
 
     private GoogleApiClient googleApiClient;
     private GoogleSignInOptions gso;
@@ -49,7 +53,17 @@ public class UpdateProfileActivity extends AppCompatActivity implements GoogleAp
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_profile);
 
-        Intent intent = getIntent();
+        //get id widget
+        txtPhone = findViewById(R.id.txtPhone);
+        txtIdentity = findViewById(R.id.txtIdentity);
+        txtAddress = findViewById(R.id.txtAddress);
+        edtPhone = findViewById(R.id.edtPhone);
+        edtIdentity = findViewById(R.id.edtIdentity);
+        edtAddress = findViewById(R.id.edtAddress);
+        btnBack = findViewById(R.id.btnBackSignIn);
+        btnDone = findViewById(R.id.btnDoneUpdate);
+
+        final Intent intent = getIntent();
 
         //TEST DATABASE
         userDao = new UserDAO(this);
@@ -72,20 +86,9 @@ public class UpdateProfileActivity extends AppCompatActivity implements GoogleAp
 //            userDao.insert(user3);
 //        }
 
-        String id = intent.getStringExtra("id");
-        String name = intent.getStringExtra("name");
-        String email = intent.getStringExtra("email");
-        User user1 = new User("MT001", "123456789", name, email,
-                    "123 le anh xuan", "123456789", 1);
-        userDao.insert(user1);
+
 
         //END TEST DATABASE
-
-        avatar = findViewById(R.id.avatar);
-        txtName = findViewById(R.id.txtName);
-        txtEmail = findViewById(R.id.txtEmail);
-        txtID = findViewById(R.id.txtID);
-        btnSignOut = findViewById(R.id.btnSignOut);
 
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
@@ -99,27 +102,42 @@ public class UpdateProfileActivity extends AppCompatActivity implements GoogleAp
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
-        btnSignOut.setOnClickListener(new View.OnClickListener() {
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signOut();
+                BackSignIn();
             }
         });
 
-
-
+        btnDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String id = insertUser(intent);
+                Intent intent = new Intent(UpdateProfileActivity.this, MainActivity.class);
+                intent.putExtra("userID", id);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
-    private void signOut() {
-        Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(new ResultCallback<Status>() {
-            @Override
-            public void onResult(@NonNull Status status) {
-                if(status.isSuccess())
-                    gotoMainActivity();
-                else
-                    Toast.makeText(UpdateProfileActivity.this, "Sign out Failed!", Toast.LENGTH_SHORT).show();
-            }
-        });
+    private String insertUser(Intent intent) {
+        String id = intent.getStringExtra("id");
+        String name = intent.getStringExtra("name");
+        String email = intent.getStringExtra("email");
+        String phone = edtPhone.getText().toString();
+        String identity = edtIdentity.getText().toString();
+        String address = edtAddress.getText().toString();
+
+        User user = new User(id, phone, name, email, address, identity, 1);
+        userDao.insert(user);
+
+        return id;
+    }
+
+    private void BackSignIn() {
+        startActivity(new Intent(UpdateProfileActivity.this, LoginActivity.class));
+        finish();
     }
 
     private void gotoMainActivity() {
@@ -136,13 +154,6 @@ public class UpdateProfileActivity extends AppCompatActivity implements GoogleAp
         if(result.isSuccess()) {
             //get information of sign in account
             GoogleSignInAccount account = result.getSignInAccount();
-
-            txtName.setText(account.getDisplayName());
-            txtEmail.setText(account.getEmail());
-            txtID.setText(account.getId());
-
-            //user Picasso to set image to
-            Picasso.get().load(account.getPhotoUrl()).placeholder(R.mipmap.ic_launcher).into(avatar);
         } else {
             gotoMainActivity();
         }
@@ -151,7 +162,7 @@ public class UpdateProfileActivity extends AppCompatActivity implements GoogleAp
     @Override
     protected void onStart() {
         super.onStart();
-        login();
+        //login();
 
     }
 
