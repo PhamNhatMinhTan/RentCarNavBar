@@ -1,10 +1,10 @@
 package edu.fu.rentcarnavbar.Object;
 
-public class version {
+public class Version {
     int vs_id;
     String version;
 
-    public version(int vs_id, String version) {
+    public Version(int vs_id, String version) {
         this.vs_id = vs_id;
         this.version = version;
     }

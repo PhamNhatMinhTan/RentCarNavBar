@@ -1,10 +1,10 @@
 package edu.fu.rentcarnavbar.Object;
 
-public class branch {
+public class Branch {
     int br_id;
     String br_name, br_logo;
 
-    public branch(int br_id, String br_name, String br_logo) {
+    public Branch(int br_id, String br_name, String br_logo) {
         this.br_id = br_id;
         this.br_name = br_name;
         this.br_logo = br_logo;

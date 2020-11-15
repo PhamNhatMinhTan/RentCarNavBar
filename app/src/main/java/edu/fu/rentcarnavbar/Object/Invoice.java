@@ -28,6 +28,18 @@ public class Invoice {
         this.v_id = v_id;
     }
 
+    public Invoice(String dateStart, String dateEnd, double total, String name, String phone, String identity, int status, int u_id, int v_id) {
+        this.dateStart = dateStart;
+        this.dateEnd = dateEnd;
+        this.total = total;
+        this.name = name;
+        this.phone = phone;
+        this.identity = identity;
+        this.status = status;
+        this.u_id = u_id;
+        this.v_id = v_id;
+    }
+
     public int getId() {
         return id;
     }

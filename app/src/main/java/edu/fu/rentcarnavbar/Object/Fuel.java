@@ -1,10 +1,10 @@
 package edu.fu.rentcarnavbar.Object;
 
-public class fuel {
+public class Fuel {
     int f_id;
     String fiel;
 
-    public fuel(int f_id, String fiel) {
+    public Fuel(int f_id, String fiel) {
         this.f_id = f_id;
         this.fiel = fiel;
     }

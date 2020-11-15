@@ -1,6 +1,6 @@
 package edu.fu.rentcarnavbar.Object;
 
-public class vehicle {
+public class Vehicle {
 
 
     //v_id INTEGER PRIMARY KEY AUTOINCREMENT, v_name TEXT ,v_licensePlate TEXT, " +
@@ -10,7 +10,7 @@ public class vehicle {
     float v_costPerDate, v_costPerKm;
     String v_name, v_licensePlate, v_image;
 
-    public vehicle(int v_id,String v_name ,String v_licensePlate,int v_seat,float v_costPerDate,float v_costPerKm,String v_image,int v_status,int version,int branch,int color,int fuel,int gear)
+    public Vehicle(int v_id, String v_name , String v_licensePlate, int v_seat, float v_costPerDate, float v_costPerKm, String v_image, int v_status, int version, int branch, int color, int fuel, int gear)
     {
         this.v_id=v_id;
         this.v_name=v_name;

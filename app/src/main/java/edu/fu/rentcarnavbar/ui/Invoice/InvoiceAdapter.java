@@ -52,9 +52,9 @@ public class InvoiceAdapter extends BaseAdapter {
         ImageView img = convertView.findViewById(R.id.imageView);
 
         Invoice invoice = list.get(position);
-        txtName.setText(invoice.getName());
-        txtPrice.setText(String.valueOf(invoice.getPrice()));
-        img.setImageResource(invoice.getImg());
+//        txtName.setText(invoice.getName());
+//        txtPrice.setText(String.valueOf(invoice.getPrice()));
+        //img.setImageResource(invoice.getImg());
 
         return convertView;
     }
