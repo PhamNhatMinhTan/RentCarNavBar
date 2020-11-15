@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 public class DBOpenHepler extends SQLiteOpenHelper {
 
     //declare Const variable reference to Database
-    private static final String DATABASE_NAME = "rental_car.db";
+    private static final String DATABASE_NAME = "rental_car.sqlite";
 
     private Context context;
 
