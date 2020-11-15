@@ -22,12 +22,13 @@ public class BranchDAO extends DBOpenHepler{
     }
 
 
-    public void InsertColor(Branch br){
-        SQLiteDatabase db = this.getWritableDatabase();
+    public void InsertBranch(Branch br){
+        db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
         values.put(name, br.getBr_name());
         values.put(logo, br.getBr_logo());
         db.insert(TABLE_NAME, null, values);
+        db.close();
     }
 }

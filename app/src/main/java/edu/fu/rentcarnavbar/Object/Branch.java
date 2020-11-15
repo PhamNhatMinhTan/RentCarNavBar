@@ -10,6 +10,13 @@ public class Branch {
         this.br_logo = br_logo;
     }
 
+    public Branch(String br_name, String br_logo) {
+        this.br_name = br_name;
+        this.br_logo = br_logo;
+    }
+
+
+
     public Branch() {
     }
 

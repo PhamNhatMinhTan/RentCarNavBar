@@ -9,6 +9,10 @@ public class Version {
         this.version = version;
     }
 
+    public Version(String version) {
+        this.version = version;
+    }
+
     public Version() {
     }
 

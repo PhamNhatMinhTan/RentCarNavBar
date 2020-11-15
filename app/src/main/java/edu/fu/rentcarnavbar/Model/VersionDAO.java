@@ -20,7 +20,7 @@ public class VersionDAO extends DBOpenHepler{
         super(context);
     }
 
-    public void InsertColor(Version vs){
+    public void InsertVersion(Version vs){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 

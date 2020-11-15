@@ -22,7 +22,7 @@ public class GearDAO extends DBOpenHepler{
     }
 
 
-    public void InsertColor(Gear gear){
+    public void InsertGear(Gear gear){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 

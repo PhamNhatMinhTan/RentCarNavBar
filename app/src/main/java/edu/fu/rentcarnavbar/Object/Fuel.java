@@ -2,11 +2,18 @@ package edu.fu.rentcarnavbar.Object;
 
 public class Fuel {
     int f_id;
-    String fiel;
+    String fuel;
 
-    public Fuel(int f_id, String fiel) {
+    public Fuel(int f_id, String fuel) {
         this.f_id = f_id;
-        this.fiel = fiel;
+        this.fuel = fuel;
+    }
+
+    public Fuel() {
+    }
+
+    public Fuel(String fuel) {
+        this.fuel = fuel;
     }
 
     public int getF_id() {
@@ -17,11 +24,11 @@ public class Fuel {
         this.f_id = f_id;
     }
 
-    public String getFiel() {
-        return fiel;
+    public String getFuel() {
+        return fuel;
     }
 
-    public void setFiel(String fiel) {
-        this.fiel = fiel;
+    public void setFuel(String fuel) {
+        this.fuel = fuel;
     }
 }

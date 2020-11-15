@@ -9,6 +9,10 @@ public class Gear {
         this.gear = gear;
     }
 
+    public Gear(String gear) {
+        this.gear = gear;
+    }
+
     public int getG_id() {
         return g_id;
     }

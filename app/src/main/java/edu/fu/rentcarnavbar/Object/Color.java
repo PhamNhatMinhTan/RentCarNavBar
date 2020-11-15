@@ -9,6 +9,10 @@ public class Color {
         this.color = color;
     }
 
+    public Color(String color) {
+        this.color = color;
+    }
+
     public Color() {
     }
 
