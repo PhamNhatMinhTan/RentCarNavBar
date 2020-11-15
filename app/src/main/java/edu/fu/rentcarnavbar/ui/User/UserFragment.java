@@ -1,6 +1,5 @@
 package edu.fu.rentcarnavbar.ui.User;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,13 +8,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
 import edu.fu.rentcarnavbar.R;
-import edu.fu.rentcarnavbar.ui.Invoke.InvokeFragment;
 
 public class UserFragment extends Fragment {
 

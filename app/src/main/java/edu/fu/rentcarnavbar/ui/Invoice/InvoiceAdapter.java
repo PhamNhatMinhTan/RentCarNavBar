@@ -1,4 +1,4 @@
-package edu.fu.rentcarnavbar.ui.Invoke;
+package edu.fu.rentcarnavbar.ui.Invoice;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,16 +10,16 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import edu.fu.rentcarnavbar.Object.Invoke;
+import edu.fu.rentcarnavbar.Object.Invoice;
 import edu.fu.rentcarnavbar.R;
 
-public class InvokeAdapter extends BaseAdapter {
+public class InvoiceAdapter extends BaseAdapter {
 
     private Context context;
     private int layout;
-    private List<Invoke> list;
+    private List<Invoice> list;
 
-    public InvokeAdapter(Context context, int layout, List<Invoke> list) {
+    public InvoiceAdapter(Context context, int layout, List<Invoice> list) {
         this.context = context;
         this.layout = layout;
         this.list = list;
@@ -51,10 +51,10 @@ public class InvokeAdapter extends BaseAdapter {
         TextView txtPrice = convertView.findViewById(R.id.txtprice);
         ImageView img = convertView.findViewById(R.id.imageView);
 
-        Invoke invoke = list.get(position);
-        txtName.setText(invoke.getName());
-        txtPrice.setText(String.valueOf(invoke.getPrice()));
-        img.setImageResource(invoke.getImg());
+        Invoice invoice = list.get(position);
+        txtName.setText(invoice.getName());
+        txtPrice.setText(String.valueOf(invoice.getPrice()));
+        img.setImageResource(invoice.getImg());
 
         return convertView;
     }

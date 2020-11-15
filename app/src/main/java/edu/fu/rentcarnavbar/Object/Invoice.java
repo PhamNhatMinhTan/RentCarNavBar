@@ -1,14 +1,14 @@
 package edu.fu.rentcarnavbar.Object;
 
-public class Invoke {
+public class Invoice {
     private int img;
     private String name;
     private double price;
 
-    public Invoke() {
+    public Invoice() {
     }
 
-    public Invoke(int img, String name, double price) {
+    public Invoice(int img, String name, double price) {
         this.img = img;
         this.name = name;
         this.price = price;
