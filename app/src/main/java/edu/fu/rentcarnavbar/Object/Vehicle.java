@@ -13,19 +13,20 @@ public class Vehicle {
     public Vehicle() {
     }
 
-    public Vehicle(int v_seat, int v_status, int version, int branch, int color, int fuel, int gear, float v_costPerDate, float v_costPerKm, String v_name, String v_licensePlate, String v_image) {
-        this.v_seat = v_seat;
-        this.v_status = v_status;
-        this.version = version;
-        this.branch = branch;
-        this.color = color;
-        this.fuel = fuel;
-        this.gear = gear;
-        this.v_costPerDate = v_costPerDate;
-        this.v_costPerKm = v_costPerKm;
-        this.v_name = v_name;
-        this.v_licensePlate = v_licensePlate;
-        this.v_image = v_image;
+    public Vehicle(String v_name , String v_licensePlate, int v_seat, float v_costPerDate, float v_costPerKm, String v_image, int v_status, int version, int branch, int color, int fuel, int gear)
+    {
+        this.v_name=v_name;
+        this.v_licensePlate=v_licensePlate;
+        this.v_seat=v_seat;
+        this.v_costPerDate=v_costPerDate;
+        this.v_costPerKm=v_costPerKm;
+        this.v_image=v_image;
+        this.v_status=v_status;
+        this.version=version;
+        this.branch=branch;
+        this.color=color;
+        this.fuel=fuel;
+        this.gear=gear;
     }
 
     public Vehicle(int v_id, String v_name , String v_licensePlate, int v_seat, float v_costPerDate, float v_costPerKm, String v_image, int v_status, int version, int branch, int color, int fuel, int gear)

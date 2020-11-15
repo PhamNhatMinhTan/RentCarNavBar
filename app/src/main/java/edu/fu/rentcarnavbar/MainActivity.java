@@ -16,12 +16,14 @@ import edu.fu.rentcarnavbar.Model.ColorDAO;
 import edu.fu.rentcarnavbar.Model.FuelDAO;
 import edu.fu.rentcarnavbar.Model.GearDAO;
 import edu.fu.rentcarnavbar.Model.InvoiceDAO;
+import edu.fu.rentcarnavbar.Model.VehicleDAO;
 import edu.fu.rentcarnavbar.Model.VersionDAO;
 import edu.fu.rentcarnavbar.Object.Branch;
 import edu.fu.rentcarnavbar.Object.Color;
 import edu.fu.rentcarnavbar.Object.Fuel;
 import edu.fu.rentcarnavbar.Object.Gear;
 import edu.fu.rentcarnavbar.Object.Invoice;
+import edu.fu.rentcarnavbar.Object.Vehicle;
 import edu.fu.rentcarnavbar.Object.Version;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     VersionDAO version;
     GearDAO gear;
     BranchDAO branch;
+    VehicleDAO vehicleDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         fuel = new FuelDAO(this);
         gear = new GearDAO(this);
         version = new VersionDAO(this);
+        vehicleDAO = new VehicleDAO(this);
         //insert default
 ///*        Invoice invoice1 = new Invoice("12/11/2020", "15/11/2020", 50, "Nguyen Minh Thao", "0868772887", "352506532", 1, 2, 2);
 //
@@ -68,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
 //        Color col2 = new Color("Black");
 //        color.InsertColor(col);
 //        color.InsertColor(col2);
+        Vehicle v = new Vehicle("Porsche cayman 2020" , "65A-352.20", 4, 32, 1, "bmw_740_black", 1, 1, 1, 1, 1, 1);
+        vehicleDAO.InsertCar(v);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
