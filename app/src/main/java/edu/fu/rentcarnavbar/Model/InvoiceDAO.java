@@ -61,9 +61,9 @@ public class InvoiceDAO extends DBOpenHepler{
 
         if(cursor.moveToFirst()) {
             do {
-                Invoice invoice = new Invoice(cursor.getString(0), cursor.getString(1), cursor.getFloat(2),
-                        cursor.getString(3), cursor.getString(4), cursor.getString(5),
-                        cursor.getInt(6), cursor.getInt(7), cursor.getInt(8));
+                Invoice invoice = new Invoice(cursor.getInt(0),cursor.getString(1), cursor.getString(2), cursor.getFloat(3),
+                        cursor.getString(4), cursor.getString(5), cursor.getString(6),
+                        cursor.getInt(7), cursor.getInt(8), cursor.getInt(9));
                 list.add(invoice);
             } while (cursor.moveToNext());
         }

@@ -11,15 +11,16 @@ import android.widget.TextView;
 import java.util.List;
 
 import edu.fu.rentcarnavbar.Object.Invoice;
+import edu.fu.rentcarnavbar.Object.InvoiceList;
 import edu.fu.rentcarnavbar.R;
 
 public class InvoiceAdapter extends BaseAdapter {
 
     private Context context;
     private int layout;
-    private List<Invoice> list;
+    private List<InvoiceList> list;
 
-    public InvoiceAdapter(Context context, int layout, List<Invoice> list) {
+    public InvoiceAdapter(Context context, int layout, List<InvoiceList> list) {
         this.context = context;
         this.layout = layout;
         this.list = list;
@@ -48,12 +49,21 @@ public class InvoiceAdapter extends BaseAdapter {
 
         //
         TextView txtName = convertView.findViewById(R.id.txtName);
-        TextView txtPrice = convertView.findViewById(R.id.txtprice);
-        ImageView img = convertView.findViewById(R.id.imageView);
+        TextView txtDateStart = convertView.findViewById(R.id.txtDateStart);
+        TextView txtDateEnd = convertView.findViewById(R.id.txtDateEnd);
+        TextView txtTotal = convertView.findViewById(R.id.txtTotal);
+        ImageView image = convertView.findViewById(R.id.imageView);
 
-        Invoice invoice = list.get(position);
-//        txtName.setText(invoice.getName());
+//        Invoice invoice = list.get(position);
+        InvoiceList invoiceList = list.get(position);
+
+        txtName.setText(invoiceList.getName());
 //        txtPrice.setText(String.valueOf(invoice.getPrice()));
+        txtDateStart.setText(invoiceList.getDateStart());
+        txtDateEnd.setText(invoiceList.getDateEnd());
+        txtTotal.setText(String.valueOf(invoiceList.getTotal()));
+        image.setImageResource(Integer.parseInt(invoiceList.getImage()));
+
         //img.setImageResource(invoice.getImg());
 
         return convertView;

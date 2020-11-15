@@ -13,13 +13,14 @@ import androidx.fragment.app.Fragment;
 import java.util.ArrayList;
 
 import edu.fu.rentcarnavbar.Object.Invoice;
+import edu.fu.rentcarnavbar.Object.InvoiceList;
 import edu.fu.rentcarnavbar.R;
 
 public class InvoiceFragment extends Fragment {
 
     private InvoiceViewModel invoiceViewModel;
     ListView listView;
-    ArrayList<Invoice> arrayList;
+    ArrayList<InvoiceList> arrayList;
     InvoiceAdapter adapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -28,14 +29,11 @@ public class InvoiceFragment extends Fragment {
 
         listView = root.findViewById(R.id.listViewInvoke);
         arrayList = new ArrayList<>();
-/*        arrayList.add(new Invoice(R.drawable.ic_baseline_person_24, "Porsche Cayman 720 2019", 20));
-        arrayList.add(new Invoice(R.drawable.ic_dashboard_black_24dp, "Porsche Cayman 720 2020", 30));
-        arrayList.add(new Invoice(R.drawable.ic_baseline_person_24, "BMW X7 2020", 32));
-        arrayList.add(new Invoice(R.drawable.ic_dashboard_black_24dp, "Honda Civic 2020", 15));
-        arrayList.add(new Invoice(R.drawable.ic_dashboard_black_24dp, "Honda City 2020", 12));*/
+        String image =  String.valueOf(R.drawable.bmw_740_black);
+        arrayList.add(new InvoiceList(1,"Porsche 720 2020", "10/1150/2020", "12/11/2020", image ,150));
 //
-//        adapter = new InvoiceAdapter(getActivity().getBaseContext(), R.layout.invoke_item, arrayList);
-//        listView.setAdapter(adapter);
+        adapter = new InvoiceAdapter(getActivity().getBaseContext(), R.layout.invoke_item, arrayList);
+        listView.setAdapter(adapter);
 
         return root;
     }
