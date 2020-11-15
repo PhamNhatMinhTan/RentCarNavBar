@@ -24,6 +24,7 @@ public class UserDAO extends DBOpenHepler {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         super.onCreate(db);
     }
 
@@ -90,22 +91,19 @@ public class UserDAO extends DBOpenHepler {
 
     /**
      * The method to update user in database
-     * @param user
+     * @param id
+     * @param phone
+     * @param address
      */
-    public void update(User user) {
+    public void update(String id, String phone, String address) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
         //put values to context value
-        values.put("u_id", user.getId());
-        values.put("u_phone", user.getPhone());
-        values.put("u_name", user.getName());
-        values.put("u_email", user.getEmail());
-        values.put("u_address", user.getAddress());
-        values.put("u_identity", user.getIdentity());
-        values.put("u_status", user.getStatus());
+        values.put("u_phone", phone);
+        values.put("u_address", address);
 
-        db.update("user", values, "id = ?", new String[] { String.valueOf(user.getId()) });
+        db.update("user", values, "u_id = ?", new String[] { id });
         db.close();
     }
 
@@ -118,7 +116,7 @@ public class UserDAO extends DBOpenHepler {
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = null;
         try {
-            cursor = db.query("user", null, "id = ?", new String[] {id}, null, null, null);
+            cursor = db.query("user", null, "u_id = ?", new String[] {id}, null, null, null);
             cursor.moveToFirst();
             User user = new User(cursor.getString(0), cursor.getString(1), cursor.getString(2),
                     cursor.getString(3), cursor.getString(4), cursor.getString(5),
