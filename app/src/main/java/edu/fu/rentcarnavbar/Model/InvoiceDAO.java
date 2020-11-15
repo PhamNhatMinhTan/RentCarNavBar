@@ -52,18 +52,18 @@ public class InvoiceDAO extends DBOpenHepler{
         db.close();
     }
 
-    public List<Invoice> GetInvoiceByUser (int id){
+    public List<Invoice> GetInvoiceByUser (String id){
         List<Invoice> list = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
 
         Cursor cursor = null;
-        cursor = db.query(TABLE_NAME, null, "u_id = ?", new String[] {String.valueOf(id)}, null, null, null);
+        cursor = db.query(TABLE_NAME, null, "u_id = ?", new String[] {id}, null, null, null);
 
         if(cursor.moveToFirst()) {
             do {
                 Invoice invoice = new Invoice(cursor.getInt(0),cursor.getString(1), cursor.getString(2), cursor.getFloat(3),
                         cursor.getString(4), cursor.getString(5), cursor.getString(6),
-                        cursor.getInt(7), cursor.getInt(8), cursor.getInt(9));
+                        cursor.getInt(7), cursor.getString(8), cursor.getInt(9));
                 list.add(invoice);
             } while (cursor.moveToNext());
         }

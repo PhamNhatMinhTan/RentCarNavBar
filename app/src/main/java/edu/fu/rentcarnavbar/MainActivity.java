@@ -13,6 +13,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import edu.fu.rentcarnavbar.Model.BranchDAO;
 import edu.fu.rentcarnavbar.Model.ColorDAO;
+import edu.fu.rentcarnavbar.Model.DBOpenHepler;
 import edu.fu.rentcarnavbar.Model.FuelDAO;
 import edu.fu.rentcarnavbar.Model.GearDAO;
 import edu.fu.rentcarnavbar.Model.InvoiceDAO;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     GearDAO gear;
     BranchDAO branch;
     VehicleDAO vehicleDAO;
+    DBOpenHepler helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,34 +50,13 @@ public class MainActivity extends AppCompatActivity {
         gear = new GearDAO(this);
         version = new VersionDAO(this);
         vehicleDAO = new VehicleDAO(this);
+        helper = new DBOpenHepler(this);
+
         //insert default
-///*        Invoice invoice1 = new Invoice("12/11/2020", "15/11/2020", 50, "Nguyen Minh Thao", "0868772887", "352506532", 1, 2, 2);
+//        Invoice invoice1 = new Invoice("142/11/2020", "15/11/2020", 50, "Nguyen Minh Thao", "0868772887", "352506532", 1, "106846390997285914983", 2);
 //
-//        inv.InsertInvoice(invoice1);*/
-//        Fuel f = new Fuel("Gasoline");
-//        Fuel f2 = new Fuel("Oil");
-//        fuel.InsertFuel(f);data
-//        fuel.InsertFuel(f2);
-//        Gear g = new Gear("Auto");
-//        Gear g2 = new Gear("Manual");
-//        gear.InsertGear(g);
-//        gear.InsertGear(g2);
-//        Version v = new Version("Cayman 2020");
-//        Version v1 = new Version("Cayman 2019");
-//        version.InsertVersion(v);
-//        version.InsertVersion(v1);
-//        Branch br = new Branch("Porsche", "porsche");
-//        Branch br1 = new Branch("BMW", "bmw");
-//        branch.InsertBranch(br);
-//        branch.InsertBranch(br1);
-//        Color col = new Color("Blue");
-//        Color col2 = new Color("Black");
-//        color.InsertColor(col);
-//        color.InsertColor(col2);
-        Vehicle v = new Vehicle("Porsche cayman 2020" , "65A-352.20", 4, 32, 1, "bmw_740_black", 1, 1, 1, 1, 1, 1);
-        vehicleDAO.InsertCar(v);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+//        inv.InsertInvoice(invoice1);
+
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
                 .build();

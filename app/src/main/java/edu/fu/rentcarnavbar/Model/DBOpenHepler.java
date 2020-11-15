@@ -67,7 +67,7 @@ public class DBOpenHepler extends SQLiteOpenHelper {
         //Create table invoice
         String queryCreateInvoice = " CREATE TABLE IF NOT EXISTS invoice(i_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 " i_dateStart TEXT, i_dateEnd TEXT, i_total FLOAT, i_name TEXT, i_phone TEXT, i_identity TEXT," +
-                " i_status INTEGER, u_id INTEGER, v_id INTEGER); ";
+                " i_status INTEGER, u_id TEXT, v_id INTEGER); ";
         db.execSQL(queryCreateInvoice);
     }
 

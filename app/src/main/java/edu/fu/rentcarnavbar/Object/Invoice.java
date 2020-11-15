@@ -9,13 +9,13 @@ public class Invoice {
     private String phone;
     private String identity;
     private int status;
-    private int u_id;
+    private String u_id;
     private int v_id;
 
     public Invoice() {
     }
 
-    public Invoice(int id, String dateStart, String dateEnd, double total, String name, String phone, String identity, int status, int u_id, int v_id) {
+    public Invoice(int id, String dateStart, String dateEnd, double total, String name, String phone, String identity, int status, String u_id, int v_id) {
         this.id = id;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
@@ -28,7 +28,7 @@ public class Invoice {
         this.v_id = v_id;
     }
 
-    public Invoice(String dateStart, String dateEnd, double total, String name, String phone, String identity, int status, int u_id, int v_id) {
+    public Invoice(String dateStart, String dateEnd, double total, String name, String phone, String identity, int status, String u_id, int v_id) {
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
         this.total = total;
@@ -104,11 +104,11 @@ public class Invoice {
         this.status = status;
     }
 
-    public int getU_id() {
+    public String getU_id() {
         return u_id;
     }
 
-    public void setU_id(int u_id) {
+    public void setU_id(String u_id) {
         this.u_id = u_id;
     }
 
