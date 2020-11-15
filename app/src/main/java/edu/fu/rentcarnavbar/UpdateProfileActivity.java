@@ -114,7 +114,7 @@ public class UpdateProfileActivity extends AppCompatActivity implements GoogleAp
             public void onClick(View v) {
                 String id = insertUser(intent);
                 Intent intent = new Intent(UpdateProfileActivity.this, MainActivity.class);
-                intent.putExtra("userID", id);
+                intent.putExtra("id", id);
                 startActivity(intent);
                 finish();
             }
