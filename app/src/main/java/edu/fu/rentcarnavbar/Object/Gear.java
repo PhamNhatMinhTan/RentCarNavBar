@@ -13,7 +13,15 @@ public class Gear {
         return g_id;
     }
 
+    public void setG_id(int g_id) {
+        this.g_id = g_id;
+    }
+
     public String getGear() {
         return gear;
+    }
+
+    public void setGear(String gear) {
+        this.gear = gear;
     }
 }

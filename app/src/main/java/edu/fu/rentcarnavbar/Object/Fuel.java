@@ -13,7 +13,15 @@ public class Fuel {
         return f_id;
     }
 
+    public void setF_id(int f_id) {
+        this.f_id = f_id;
+    }
+
     public String getFiel() {
         return fiel;
+    }
+
+    public void setFiel(String fiel) {
+        this.fiel = fiel;
     }
 }
