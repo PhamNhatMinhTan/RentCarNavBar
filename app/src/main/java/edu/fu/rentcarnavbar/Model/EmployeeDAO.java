@@ -71,7 +71,7 @@ class EmployeeDAO extends DBOpenHepler {
         values.put("u_email", employee.getEmail());
         values.put("u_address", employee.getAddress());
         values.put("u_status", employee.getStatus());
-        
+
         //insert vao bang
         db.insert("employee", null, values);
 
