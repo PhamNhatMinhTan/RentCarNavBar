@@ -1,5 +1,6 @@
 package edu.fu.rentcarnavbar.ui.Invoice;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import android.app.Fragment;
@@ -7,7 +8,10 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.RequiresApi;
 
 import edu.fu.rentcarnavbar.Model.FuelDAO;
 import edu.fu.rentcarnavbar.Model.GearDAO;
@@ -22,6 +26,7 @@ public class DetailInvoiceFragment extends Fragment {
     FuelDAO fuelDAO;
     GearDAO gearDAO;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,6 +51,7 @@ public class DetailInvoiceFragment extends Fragment {
         TextView txtdateEnd = view.findViewById(R.id.txtDateEnd_iv);
         TextView txtTotal = view.findViewById(R.id.txtTotal_iv);
         TextView txtIdentity = view.findViewById(R.id.txtIdentity_iv);
+        ImageView imageView = view.findViewById(R.id.imgInvoiceDetail);
 
         txtName.setText(vehicleDAO.GetVehicleById(v_id).getV_name());
         txtlicensePlate.setText(vehicleDAO.GetVehicleById(v_id).getV_licensePlate());
@@ -54,11 +60,15 @@ public class DetailInvoiceFragment extends Fragment {
         txtPhone.setText(invoiceDAO.GetInvoiceById(value).getPhone());
         txtdateEnd.setText(invoiceDAO.GetInvoiceById(value).getDateEnd());
         txtdateStart.setText(invoiceDAO.GetInvoiceById(value).getDateStart());
-        txtTotal.setText(String.valueOf(invoiceDAO.GetInvoiceById(value).getTotal()));
+        txtTotal.setText(String.valueOf("$"+invoiceDAO.GetInvoiceById(value).getTotal()));
         txtIdentity.setText(invoiceDAO.GetInvoiceById(value).getIdentity());
         txtFuel.setText(fuelDAO.GetFuelById(vehicleDAO.GetVehicleById(v_id).getFuel()).getFuel());
         txtGear.setText(gearDAO.GetGearById(vehicleDAO.GetVehicleById(v_id).getGear()).getGear());
 
+        String imageName = vehicleDAO.GetVehicleById(v_id).getV_image();
+        int image = getContext().getResources().getIdentifier(imageName, "drawable", getContext().getPackageName());
+
+        imageView.setImageResource(image);
         //TextView txt = view.findViewById(R.id.txtnameInvoice);
         //txt.setText(value);
         return view;
