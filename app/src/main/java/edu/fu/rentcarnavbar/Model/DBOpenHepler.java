@@ -33,6 +33,12 @@ public class DBOpenHepler extends SQLiteOpenHelper {
                 " u_status INTEGER); ";
         db.execSQL(queryCreateUser);
 
+        //Create table Employee
+        String queryCreateEmployee = " CREATE TABLE IF NOT EXISTS employee(emp_id INTEGER PRIMARY KEY AUTOINCREMENT, u_username TEXT, " +
+                " u_password TEXT, u_name TEXT, u_email TEXT, u_address TEXT, " +
+                " u_status INTEGER); ";
+        db.execSQL(queryCreateEmployee);
+
         //Create table vehicle
         String queryCreateVehicle = " CREATE TABLE IF NOT EXISTS vehicle(v_id INTEGER PRIMARY KEY AUTOINCREMENT,v_name TEXT,v_licensePlate TEXT, " +
                 " v_seat INTEGER, v_costPerDate FLOAT, v_costPerKm FLOAT, v_image TEXT, v_status INTEGER, version INTEGER, " +
