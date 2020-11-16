@@ -58,11 +58,13 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navView, navController);
     }
 
+
     public static void change(int invoice_Id){
         DetailInvoiceFragment invoiceDetail = new DetailInvoiceFragment();
         Bundle bundle = new Bundle();
         bundle.putInt("invoiceId", invoice_Id);
         invoiceDetail.setArguments(bundle);
+
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.nav_host_fragment, invoiceDetail);
         transaction.addToBackStack(null);

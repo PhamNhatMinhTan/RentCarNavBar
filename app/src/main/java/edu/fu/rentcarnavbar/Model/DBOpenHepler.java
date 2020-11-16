@@ -69,6 +69,8 @@ public class DBOpenHepler extends SQLiteOpenHelper {
                 " i_dateStart TEXT, i_dateEnd TEXT, i_total FLOAT, i_name TEXT, i_phone TEXT, i_identity TEXT," +
                 " i_status INTEGER, u_id TEXT, v_id INTEGER); ";
         db.execSQL(queryCreateInvoice);
+
+
     }
 
     //endregion
