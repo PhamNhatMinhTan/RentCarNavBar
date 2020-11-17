@@ -100,30 +100,47 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             GoogleSignInAccount account = result.getSignInAccount();
             Intent intent = null;
 
-            if(!isExist(account.getId())) {
-                intent = new Intent(LoginActivity.this, UpdateProfileActivity.class);
-                intent.putExtra("id", account.getId());
-                intent.putExtra("name", account.getDisplayName());
-                intent.putExtra("email", account.getEmail());
+            String emailEmp1 = "phamnhatminhtan@gmail.com";
+            String id = "1";
+            if (emailEmp1.equals(account.getEmail())) {
+                if(!isExist(account.getEmail())) {
+                    intent = new Intent(LoginActivity.this, MainActivity.class);
 
-                startActivity(intent);
+                    User user1 = new User(id, "090456987", "Minh Tan", emailEmp1, "Can Tho", "123586985", 2);
+                    userDao.insert(user1);
+
+                    intent.putExtra("id", id);
+                    startActivity(intent);
+                } else {
+                    intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.putExtra("id", id);
+
+                    startActivity(intent);
+                }
             } else {
-                intent = new Intent(LoginActivity.this, MainActivity.class);
-                intent.putExtra("id", account.getId());
+                if(!isExist(account.getEmail())) {
+                    intent = new Intent(LoginActivity.this, UpdateProfileActivity.class);
+                    intent.putExtra("id", account.getId());
+                    intent.putExtra("name", account.getDisplayName());
+                    intent.putExtra("email", account.getEmail());
 
-                startActivity(intent);
+                    startActivity(intent);
+                } else {
+                    intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.putExtra("id", account.getId());
+
+                    startActivity(intent);
+                }
             }
-        } else {
-
         }
     }
 
-    public boolean isExist(String id) {
+    public boolean isExist(String email) {
         list = new ArrayList<>();
         list = userDao.getAllUser();
 
         for (User user : list) {
-            if (user.getId().equals(id)) {
+            if (user.getEmail().equals(email)) {
                 return true;
             }
         }

@@ -93,6 +93,7 @@ public class UpdateProfileActivity extends AppCompatActivity implements GoogleAp
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String phone = edtPhone.getText().toString();
                 String identity = edtIdentity.getText().toString();
                 String address = edtAddress.getText().toString();
