@@ -20,15 +20,15 @@ import edu.fu.rentcarnavbar.Model.FuelDAO;
 import edu.fu.rentcarnavbar.Model.GearDAO;
 import edu.fu.rentcarnavbar.Model.InvoiceDAO;
 import edu.fu.rentcarnavbar.Model.VehicleDAO;
-import edu.fu.rentcarnavbar.Model.VersionDAO;
 import edu.fu.rentcarnavbar.ui.Invoice.DetailInvoiceFragment;
+import edu.fu.rentcarnavbar.ui.home.carDetailFragment;
 
 public class MainActivity extends AppCompatActivity {
 
     InvoiceDAO inv;
     ColorDAO color;
     FuelDAO fuel;
-    VersionDAO version;
+    //VersionDAO version;
     GearDAO gear;
     BranchDAO branch;
     VehicleDAO vehicleDAO;
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         color = new ColorDAO(this);
         fuel = new FuelDAO(this);
         gear = new GearDAO(this);
-        version = new VersionDAO(this);
+        //version = new VersionDAO(this);
         vehicleDAO = new VehicleDAO(this);
         helper = new DBOpenHepler(this);
 
@@ -69,4 +69,16 @@ public class MainActivity extends AppCompatActivity {
         transaction.commit();
     }
 
+
+    public static void deatailCar(int id){
+        carDetailFragment carDetail = new carDetailFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt("userid", id);
+        carDetail.setArguments(bundle);
+
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.nav_host_fragment, carDetail);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 }

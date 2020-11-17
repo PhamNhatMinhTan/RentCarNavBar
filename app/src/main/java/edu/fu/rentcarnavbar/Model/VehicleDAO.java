@@ -10,9 +10,14 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.fu.rentcarnavbar.Object.Branch;
+import edu.fu.rentcarnavbar.Object.Color;
+import edu.fu.rentcarnavbar.Object.Fuel;
+import edu.fu.rentcarnavbar.Object.Gear;
 import edu.fu.rentcarnavbar.Object.Invoice;
 import edu.fu.rentcarnavbar.Object.User;
 import edu.fu.rentcarnavbar.Object.Vehicle;
+import edu.fu.rentcarnavbar.Object.Version;
 
 public class VehicleDAO extends DBOpenHepler{
 
@@ -71,5 +76,143 @@ public class VehicleDAO extends DBOpenHepler{
         } finally {
             cursor.close();
         }
+    }
+
+    /**
+     * Write into DB
+     * @param sqlString
+     */
+    public void writeData(String sqlString)
+    {
+        SQLiteDatabase database = getWritableDatabase();
+        database.execSQL(sqlString);
+    }
+
+    /**
+     * read into DB
+     * @param sqlString
+     * @return
+     */
+    public Cursor getData(String sqlString)
+    {
+        SQLiteDatabase database = getReadableDatabase();
+        return database.rawQuery(sqlString, null);
+    }
+
+    /**
+     * list of car
+     * @return
+     */
+    public List<Vehicle> getCarList(){
+        List<Vehicle> lst = new ArrayList<>();
+        Cursor cursor = getData("SELECT * FROM vehicle");
+        while (cursor.moveToNext())
+        {
+            int v_id=cursor.getInt(0);
+            String v_name=cursor.getString(1);
+            String v_licensePlate=cursor.getString(2);
+            int v_seat=cursor.getInt(3);
+            float v_costPerDate=cursor.getFloat(4);
+            float v_costPerKm=cursor.getFloat(5);
+            String v_image=cursor.getString(6);
+            int v_status=cursor.getInt(7);
+            int version=cursor.getInt(8);
+            int branch=cursor.getInt(9);
+            int color=cursor.getInt(10);
+            int fuel=cursor.getInt(11);
+            int gear=cursor.getInt(12);;
+            lst.add(new Vehicle(v_id,v_name ,v_licensePlate,v_seat,v_costPerDate,v_costPerKm,v_image,v_status,version,branch,color,fuel,gear));
+        }
+        //adapter.notifyDataSetChanged();
+        return lst;
+    }
+
+    /**
+     * list of version
+     * @return
+     */
+    public List<Version> getVesionList(){
+        List<Version> lst = new ArrayList<>();
+        Cursor cursor = getData("SELECT * FROM version");
+        while (cursor.moveToNext())
+        {
+            int vs_id=cursor.getInt(0);
+            String version = cursor.getString(1);
+
+            lst.add(new Version(vs_id,version));
+        }
+        //adapter.notifyDataSetChanged();
+        return lst;
+    }
+    /**
+     * list of color
+     * @return
+     */
+    public List<Color> getColorList(){
+        List<Color> lst = new ArrayList<>();
+        Cursor cursor = getData("SELECT * FROM color");
+        while (cursor.moveToNext())
+        {
+            int color_id=cursor.getInt(0);
+            String color = cursor.getString(1);
+
+            lst.add(new Color(color_id,color));
+        }
+        //adapter.notifyDataSetChanged();
+        return lst;
+    }
+    /**
+     * list of branch
+     * @return
+     */
+    public List<Branch> getBranchList(){
+        List<Branch> lst = new ArrayList<>();
+        Cursor cursor = getData("SELECT * FROM branch");
+        while (cursor.moveToNext())
+        {
+            int br_id=cursor.getInt(0);
+            String br_name = cursor.getString(1);
+            String br_logo = cursor.getString(2);
+
+            lst.add(new Branch(br_id,br_name,br_logo));
+        }
+        //adapter.notifyDataSetChanged();
+        return lst;
+    }
+
+    /**
+     * list of gear
+     * @return
+     */
+    public List<Gear> getGreaList(){
+        List<Gear> lst = new ArrayList<>();
+        Cursor cursor = getData("SELECT * FROM gear");
+        while (cursor.moveToNext())
+        {
+            int br_id=cursor.getInt(0);
+            String br_name = cursor.getString(1);
+
+            lst.add(new Gear(br_id,br_name));
+        }
+        //adapter.notifyDataSetChanged();
+        return lst;
+    }
+
+    /**
+     * list of Fuel
+     * @return
+     */
+    public List<Fuel> getFuelList(){
+        List<Fuel> lst = new ArrayList<>();
+        Cursor cursor = getData("SELECT * FROM fuel");
+        while (cursor.moveToNext())
+        {
+            int br_id=cursor.getInt(0);
+            String br_name = cursor.getString(1);
+
+            lst.add(new Fuel(br_id,br_name));
+        }
+        //adapter.notifyDataSetChanged();
+        return lst;
     }
 }
