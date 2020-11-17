@@ -128,12 +128,23 @@ public class InvoiceDAO extends DBOpenHepler{
     public void updateInvoice(String id, String i_status) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-
-        if(i_status == "")
+        int my_status = -1;
+        if(i_status == "Processing")
+        {
+            my_status = 0;
+        }
+        else if(i_status == "Renting")
+        {
+            my_status = 1;
+        }
+        else if(i_status == "Rented")
+        {
+            my_status = 2;
+        }
         //put values to context value
-        values.put(status, i_status);
+        values.put(status, my_status);
 
-        db.update("user", values, "u_id = ?", new String[] { id });
+        db.update(TABLE_NAME, values, "i_id = ?", new String[] { id });
         db.close();
     }
 
