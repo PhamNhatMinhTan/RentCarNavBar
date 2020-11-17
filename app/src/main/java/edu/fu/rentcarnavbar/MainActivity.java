@@ -13,13 +13,18 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import edu.fu.rentcarnavbar.Model.BranchDAO;
 import edu.fu.rentcarnavbar.Model.ColorDAO;
 import edu.fu.rentcarnavbar.Model.DBOpenHepler;
 import edu.fu.rentcarnavbar.Model.FuelDAO;
 import edu.fu.rentcarnavbar.Model.GearDAO;
 import edu.fu.rentcarnavbar.Model.InvoiceDAO;
+import edu.fu.rentcarnavbar.Model.UserDAO;
 import edu.fu.rentcarnavbar.Model.VehicleDAO;
+import edu.fu.rentcarnavbar.Object.User;
 import edu.fu.rentcarnavbar.ui.Invoice.DetailInvoiceFragment;
 import edu.fu.rentcarnavbar.ui.home.carDetailFragment;
 
@@ -33,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     BranchDAO branch;
     VehicleDAO vehicleDAO;
     DBOpenHepler helper;
+    UserDAO userDAO;
     static FragmentManager manager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
         color = new ColorDAO(this);
         fuel = new FuelDAO(this);
         gear = new GearDAO(this);
+        userDAO = new UserDAO(this);
+        List<User> uList = new ArrayList<>();
+        uList = userDAO.getAllUser();
         //version = new VersionDAO(this);
         vehicleDAO = new VehicleDAO(this);
         helper = new DBOpenHepler(this);

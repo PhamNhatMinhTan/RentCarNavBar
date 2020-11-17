@@ -19,13 +19,27 @@ public class UserDAO extends DBOpenHepler {
     public UserDAO(@Nullable Context context) {
 
         super(context);
-
+        initData();
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
 
         super.onCreate(db);
+
+    }
+
+    public void initData() {
+        List<User> list = new ArrayList<>();
+        list = getAllUser();
+
+        if(list.size() == 0) {
+
+            User u1 = new User("1", "123", "Minh Tan", "tan@gmail.com", "address", "34567", 1);
+            User u2 = new User("2", "1234567", "Minh Tam", "hello@gmail.com", "address2", "34567557", 1);
+            insert(u1);
+            insert(u2);
+        }
     }
 
     /**

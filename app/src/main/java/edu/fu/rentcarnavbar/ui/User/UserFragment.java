@@ -1,5 +1,6 @@
 package edu.fu.rentcarnavbar.ui.User;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,11 +29,12 @@ import edu.fu.rentcarnavbar.Model.UserDAO;
 import edu.fu.rentcarnavbar.Object.User;
 import edu.fu.rentcarnavbar.R;
 
-public class UserFragment extends Fragment implements GoogleApiClient.OnConnectionFailedListener{
+public class UserFragment extends Fragment implements GoogleApiClient.OnConnectionFailedListener {
     private boolean isEdit = true;
     private UserViewModel userViewModel;
     private UserDAO userDao;
     private User user = new User();
+    private String id;
 
     private GoogleApiClient googleApiClient;
     private GoogleSignInOptions gso;
@@ -47,7 +49,6 @@ public class UserFragment extends Fragment implements GoogleApiClient.OnConnecti
     private Button btnSignOut;
 
     Intent intent;
-
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -68,10 +69,11 @@ public class UserFragment extends Fragment implements GoogleApiClient.OnConnecti
 
         intent = getActivity().getIntent();
 
-        final String id = intent.getStringExtra("id");
+        id = intent.getStringExtra("id");
+        //final String id = "1";
         //Log.d("Log user ID", id);
 
-        user = userDao.getUserById(id);
+
 
         txtName = view.findViewById(R.id.txtName);
         txtPhoneDetail = view.findViewById(R.id.txtPhoneDetail);
@@ -86,29 +88,26 @@ public class UserFragment extends Fragment implements GoogleApiClient.OnConnecti
 //        txtIdentityDetail.setEnabled(false);
 //        txtAddressDetail.setEnabled(false);
 
-        txtName.setText(user.getName());
-        txtPhoneDetail.setText(user.getPhone());
-        txtEmailDetail.setText(user.getEmail());
-        txtIdentityDetail.setText(user.getIdentity());
-        txtAddressDetail.setText(user.getAddress());
+        SetDataToText();
 
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(isEdit){
-                    isEdit = false;
-                    btnEdit.setText("Save");
-                    //txtPhoneDetail.setEnabled(true);
-                    //txtAddressDetail.setEnabled(true);
-                } else {
-                    isEdit = true;
-                    //String phone = txtPhoneDetail.getText().toString();
-                    //String address = txtAddressDetail.getText().toString();
-                    //userDao.update(id, phone, address);
-                    btnEdit.setText("Edit");
-                    //txtPhoneDetail.setEnabled(false);
-                    //txtAddressDetail.setEnabled(false);
-                }
+//                if (isEdit) {
+//                    isEdit = false;
+//                    btnEdit.setText("Save");
+//                    //txtPhoneDetail.setEnabled(true);
+//                    //txtAddressDetail.setEnabled(true);
+//                } else {
+//                    isEdit = true;
+//                    //String phone = txtPhoneDetail.getText().toString();
+//                    //String address = txtAddressDetail.getText().toString();
+//                    //userDao.update(id, phone, address);
+//                    btnEdit.setText("Edit");
+//                    //txtPhoneDetail.setEnabled(false);
+//                    //txtAddressDetail.setEnabled(false);
+//                }
+                DialogEdit();
             }
         });
 
@@ -116,10 +115,14 @@ public class UserFragment extends Fragment implements GoogleApiClient.OnConnecti
                 requestEmail()
                 .build();
 
-        googleApiClient = new GoogleApiClient.Builder(getActivity())
-                .enableAutoManage(getActivity(), this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
-                .build();
+        if(googleApiClient != null) {
+            // Build a GoogleSignInClient with the options specified by gso to access Google Sign In.
+            googleApiClient = new GoogleApiClient.Builder(getActivity())
+                    .enableAutoManage(getActivity(), this)
+                    .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                    .build();
+        }
+
 
         textView.setText("My name ntk");
 
@@ -134,6 +137,20 @@ public class UserFragment extends Fragment implements GoogleApiClient.OnConnecti
         return view;
     }
 
+    private void SetDataToText() {
+        user = userDao.getUserById(id);
+        txtName.setText(user.getName());
+        txtPhoneDetail.setText(user.getPhone());
+        txtEmailDetail.setText(user.getEmail());
+        txtIdentityDetail.setText(user.getIdentity());
+        txtAddressDetail.setText(user.getAddress());
+    }
+
+    private void setDataAfterUpdate(String phone, String address) {
+        txtPhoneDetail.setText(phone);
+        txtAddressDetail.setText(address);
+    }
+
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
@@ -142,10 +159,48 @@ public class UserFragment extends Fragment implements GoogleApiClient.OnConnecti
     public void signOut() {
         GoogleSignIn.getClient(getActivity(), gso).signOut()
                 .addOnCompleteListener(getActivity(), new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        startActivity(new Intent(getActivity(), LoginActivity.class));
+                    }
+                });
+    }
+
+    public void DialogEdit() {
+        final Dialog dialog = new Dialog(getActivity());
+        dialog.setContentView(R.layout.activity_dialog_edit);
+
+        final EditText edtPhone = dialog.findViewById(R.id.edtPhoneUpdate);
+        final EditText edtAddress = dialog.findViewById(R.id.edtAddressUpdate);
+        Button btnUpdate = dialog.findViewById(R.id.btnUpdate);
+        Button btnBack = dialog.findViewById(R.id.btnBack);
+
+        edtPhone.setText(txtPhoneDetail.getText().toString());
+        edtAddress.setText(txtAddressDetail.getText().toString());
+
+        LayoutInflater inflater = getLayoutInflater();
+
+
+
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                startActivity(new Intent(getActivity(), LoginActivity.class));
+            public void onClick(View v) {
+
+                String phone = edtPhone.getText().toString();
+                String address = edtAddress.getText().toString();
+                setDataAfterUpdate(phone, address);
+                userDao.update(id, phone, address);
+                dialog.dismiss();
             }
         });
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+
     }
 }
