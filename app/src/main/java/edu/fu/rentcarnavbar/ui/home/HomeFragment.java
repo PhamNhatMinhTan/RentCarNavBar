@@ -36,7 +36,7 @@ public class HomeFragment extends Fragment {
         carListView = (ListView) root.findViewById(R.id.listViewCar);
 
         DBOpenHepler db = new DBOpenHepler(getActivity().getBaseContext());
-        db.insert();
+        //db.insert();
         repository = new VehicleDAO(getActivity().getBaseContext());
 
         lstCar = new ArrayList<>();
