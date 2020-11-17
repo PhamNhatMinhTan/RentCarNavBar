@@ -48,13 +48,13 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 .requestEmail()
                 .build();
 
-        if(googleApiClient != null) {
+        //if(googleApiClient != null) {
             // Build a GoogleSignInClient with the options specified by gso to access Google Sign In.
             googleApiClient = new GoogleApiClient.Builder(this)
                     .enableAutoManage(this, this)
                     .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                     .build();
-        }
+        //}
 
 
         btnSignIn = findViewById(R.id.sign_in_button);

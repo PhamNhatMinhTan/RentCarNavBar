@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -62,34 +63,12 @@ public class UpdateProfileActivity extends AppCompatActivity implements GoogleAp
         edtIdentity = findViewById(R.id.edtIdentity);
         edtAddress = findViewById(R.id.edtAddress);
         btnBack = findViewById(R.id.btnBackSignIn);
-        btnDone = findViewById(R.id.btnDoneUpdate);
+        btnDone = findViewById(R.id.btnDone);
 
         final Intent intent = getIntent();
 
         //TEST DATABASE
         userDao = new UserDAO(this);
-        //list = userDao.getAllUser();
-
-        //User userTmp = getSignInResult();
-
-        //init data if database is empty
-//        if (list.size() == 0) {
-//
-//            User user1 = new User("MT001", "123456789", "Minh Tan", "abc@gmail.com",
-//                    "123 le anh xuan", "123456789", 1);
-//            User user2 = new User("MT002", "1122334455", "Pham Nhat", "def@gmail.com",
-//                    "123 le anh xuan", "123456789", 1);
-//            User user3 = new User("MT003", "123456789", "Minh Tan", "abc@gmail.com",
-//                    "123 le anh xuan", "123456789", 1);
-//
-//            userDao.insert(user1);
-//            userDao.insert(user2);
-//            userDao.insert(user3);
-//        }
-
-
-
-        //END TEST DATABASE
 
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
@@ -97,7 +76,7 @@ public class UpdateProfileActivity extends AppCompatActivity implements GoogleAp
                 .requestEmail()
                 .build();
 
-        if(googleApiClient != null) {
+        if (googleApiClient != null) {
             // Build a GoogleSignInClient with the options specified by gso to access Google Sign In.
             googleApiClient = new GoogleApiClient.Builder(this)
                     .enableAutoManage(this, this)
@@ -111,17 +90,30 @@ public class UpdateProfileActivity extends AppCompatActivity implements GoogleAp
                 BackSignIn();
             }
         });
-
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String id = insertUser(intent);
-                Intent intent = new Intent(UpdateProfileActivity.this, MainActivity.class);
-                intent.putExtra("id", id);
-                startActivity(intent);
-                finish();
+                String phone = edtPhone.getText().toString();
+                String identity = edtIdentity.getText().toString();
+                String address = edtAddress.getText().toString();
+
+                if (phone.length() == 0 || identity.length() == 0 || address.length() == 0) {
+                    showWaring("All field must be fill in!!!");
+                } else if (!phone.matches("\\d{10}")) {
+                    showWaring("The phone number must be the digits and long 10 characters");
+                } else if (!(identity.matches("\\d{9}") || identity.matches("\\d{12}"))) {
+                    showWaring("The Identity must be the digits and long from 9 or 12 characters");
+                } else {
+                    String id = insertUser(intent);
+                    Intent intent = new Intent(UpdateProfileActivity.this, MainActivity.class);
+                    intent.putExtra("id", id);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
+
+
     }
 
     private String insertUser(Intent intent) {
@@ -154,7 +146,7 @@ public class UpdateProfileActivity extends AppCompatActivity implements GoogleAp
     }
 
     private void handleSignInResult(GoogleSignInResult result) {
-        if(result.isSuccess()) {
+        if (result.isSuccess()) {
             //get information of sign in account
             GoogleSignInAccount account = result.getSignInAccount();
         } else {
@@ -175,7 +167,7 @@ public class UpdateProfileActivity extends AppCompatActivity implements GoogleAp
                 .silentSignIn(googleApiClient);
 
         //If done
-        if(optionalPendingResult.isDone()) {
+        if (optionalPendingResult.isDone()) {
             //get information's account
             GoogleSignInResult result = optionalPendingResult.get();
             handleSignInResult(result);
@@ -187,6 +179,21 @@ public class UpdateProfileActivity extends AppCompatActivity implements GoogleAp
                 }
             });
         }
+    }
+
+    private void showWaring(String message) {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+        alertDialog.setTitle("ERROR!!!");
+        alertDialog.setIcon(R.drawable.warning);
+        alertDialog.setMessage(message);
+
+//        alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//
+//            }
+//        });
+        alertDialog.show();
     }
 
 }
