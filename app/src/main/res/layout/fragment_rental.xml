@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.Invoice.DetailInvoiceFragment">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F6F3F3">
+
+            <ImageView
+                android:id="@+id/imgRent"
+                android:layout_width="404dp"
+                android:layout_height="149dp"
+                android:layout_marginTop="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/txtCarNameRent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:textColor="#011168"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.082"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgRent" />
+
+            <TextView
+                android:id="@+id/txtFullNameCarRent_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="108dp"
+                android:layout_marginTop="35dp"
+                android:text="Name :"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtCarNameRent" />
+
+            <EditText
+                android:id="@+id/txtFullNameCarRent"
+                android:layout_width="140dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="220dp"
+                android:layout_marginLeft="280dp"
+                android:layout_marginTop="25dp"
+                android:inputType="text"
+                android:textSize="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtCarNameRent" />
+
+            <TextView
+                android:id="@+id/txtPhoneRent_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="108dp"
+                android:layout_marginTop="15dp"
+                android:text="Phone :"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtFullNameCarRent_iv" />
+
+            <EditText
+                android:id="@+id/txtPhoneRent"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="220dp"
+                android:layout_marginLeft="280dp"
+                android:layout_marginTop="5dp"
+                android:inputType="text"
+                android:textSize="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtFullNameCarRent_iv" />
+
+
+            <TextView
+                android:id="@+id/txtIdentityRent_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="108dp"
+                android:layout_marginTop="15dp"
+                android:text="Identity :"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtPhoneRent_iv" />
+
+            <EditText
+                android:id="@+id/txtIdentityRent"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="220dp"
+                android:layout_marginLeft="200dp"
+                android:layout_marginTop="5dp"
+                android:inputType="text"
+                android:textSize="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtPhoneRent_iv" />
+
+            <TextView
+                android:id="@+id/txtStartDateRent_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="108dp"
+                android:layout_marginTop="15dp"
+                android:text="Pickup date :"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtIdentityRent_iv" />
+
+            <EditText
+                android:id="@+id/txtStartDateRent"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="220dp"
+                android:layout_marginLeft="280dp"
+                android:layout_marginTop="0dp"
+                android:editable="false"
+                android:textSize="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtIdentityRent_iv" />
+
+            <Button
+                android:id="@+id/btnPickStarDate"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ic_caledar_foreground"
+                app:layout_constraintLeft_toRightOf="@+id/txtStartDateRent"
+                app:layout_constraintTop_toBottomOf="@+id/txtIdentityRent_iv"
+                tools:ignore="MissingConstraints" />
+
+
+            <TextView
+                android:id="@+id/txtEndDateRent_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="108dp"
+                android:layout_marginTop="15dp"
+                android:text="Return date :"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtStartDateRent_iv" />
+
+            <EditText
+                android:id="@+id/txtEndDateRent"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="220dp"
+                android:layout_marginLeft="280dp"
+                android:layout_marginTop="0dp"
+                android:editable="false"
+                android:textSize="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtStartDateRent_iv" />
+
+            <Button
+                android:id="@+id/btnPickEndDate"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ic_caledar_foreground"
+                app:layout_constraintLeft_toRightOf="@+id/txtEndDateRent"
+                app:layout_constraintTop_toBottomOf="@+id/txtStartDateRent_iv"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/txtTotalRent_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="108dp"
+                android:layout_marginTop="15dp"
+                android:text="Total:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtEndDateRent_iv" />
+
+            <TextView
+                android:id="@+id/txtTotalRent"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="220dp"
+                android:layout_marginLeft="280dp"
+                android:layout_marginTop="15dp"
+                android:text="$00"
+                android:textSize="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtEndDateRent_iv" />
+
+            <Button
+                android:id="@+id/btnRentcar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="172dp"
+                android:layout_marginLeft="172dp"
+                android:layout_marginTop="28dp"
+                android:text="Hire Car"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtTotalRent_iv" />
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="100dp"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                app:layout_constraintTop_toBottomOf="@+id/btnRentcar"
+                app:layout_constraintVertical_bias="1.0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</FrameLayout>

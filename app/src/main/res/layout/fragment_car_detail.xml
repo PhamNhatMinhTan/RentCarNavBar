@@ -6,235 +6,247 @@
     android:layout_height="match_parent"
     tools:context=".ui.Invoice.DetailInvoiceFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#F6F3F3">
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/imgCarDetail"
-            android:layout_width="404dp"
-            android:layout_height="149dp"
-            android:layout_marginTop="70dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/avatars" />
-
-        <TextView
-            android:id="@+id/txtNameCarDetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:textColor="#011168"
-            android:textStyle="bold"
-            android:text="Name of car"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.082"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgCarDetail" />
-
-        <TextView
-            android:id="@+id/txtBranchCD"
-            android:layout_width="72dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="280dp"
-            android:layout_marginTop="35dp"
-            android:text="Branch:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtNameCarDetail" />
-
-        <TextView
-            android:id="@+id/txtBranchCDS"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="290dp"
-            android:layout_marginLeft="290dp"
-            android:layout_marginTop="35dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtNameCarDetail" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="1030dp"
+            android:background="#F6F3F3">
 
 
-        <TextView
-            android:id="@+id/txtVersionCD"
-            android:layout_width="72dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="280dp"
-            android:layout_marginTop="10dp"
-            android:text="Version:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtBranchCD" />
+            <ImageView
+                android:id="@+id/imgCarDetail"
+                android:layout_width="404dp"
+                android:layout_height="149dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars" />
 
-        <TextView
-            android:id="@+id/txtVersionCDS"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="290dp"
-            android:layout_marginLeft="300dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtBranchCD" />
+            <TextView
+                android:id="@+id/txtNameCarDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="Name of car"
+                android:textColor="#011168"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.082"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgCarDetail" />
+
+            <TextView
+                android:id="@+id/txtBranchCD"
+                android:layout_width="72dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="280dp"
+                android:layout_marginTop="35dp"
+                android:text="Branch:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtNameCarDetail" />
+
+            <TextView
+                android:id="@+id/txtBranchCDS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="290dp"
+                android:layout_marginLeft="290dp"
+                android:layout_marginTop="35dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtNameCarDetail" />
 
 
-        <TextView
-            android:id="@+id/txtColorCD"
-            android:layout_width="72dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="280dp"
-            android:layout_marginTop="10dp"
-            android:text="Color:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtVersionCD" />
+            <TextView
+                android:id="@+id/txtVersionCD"
+                android:layout_width="72dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="280dp"
+                android:layout_marginTop="10dp"
+                android:text="Version:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtBranchCD" />
 
-        <TextView
-            android:id="@+id/txtColorCDS"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="290dp"
-            android:layout_marginLeft="300dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtVersionCD" />
+            <TextView
+                android:id="@+id/txtVersionCDS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="290dp"
+                android:layout_marginLeft="300dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtBranchCD" />
 
-        <TextView
-            android:id="@+id/txtGearCD"
-            android:layout_width="72dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="280dp"
-            android:layout_marginTop="10dp"
-            android:text="Gear:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtColorCD" />
 
-        <TextView
-            android:id="@+id/txtGearCDS"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="290dp"
-            android:layout_marginLeft="300dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtColorCD" />
+            <TextView
+                android:id="@+id/txtColorCD"
+                android:layout_width="72dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="280dp"
+                android:layout_marginTop="10dp"
+                android:text="Color:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtVersionCD" />
 
-        <TextView
-            android:id="@+id/txtFuelCD"
-            android:layout_width="72dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="280dp"
-            android:layout_marginTop="10dp"
-            android:text="Fuel:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtGearCD" />
+            <TextView
+                android:id="@+id/txtColorCDS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="290dp"
+                android:layout_marginLeft="300dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtVersionCD" />
 
-        <TextView
-            android:id="@+id/txtFuelCDS"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="290dp"
-            android:layout_marginLeft="300dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtGearCD" />
+            <TextView
+                android:id="@+id/txtGearCD"
+                android:layout_width="72dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="280dp"
+                android:layout_marginTop="10dp"
+                android:text="Gear:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtColorCD" />
 
-        <TextView
-            android:id="@+id/txtSeatCD"
-            android:layout_width="72dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="280dp"
-            android:layout_marginTop="10dp"
-            android:text="Seat:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtFuelCD" />
+            <TextView
+                android:id="@+id/txtGearCDS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="290dp"
+                android:layout_marginLeft="300dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtColorCD" />
 
-        <TextView
-            android:id="@+id/txtSeatCDS"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="290dp"
-            android:layout_marginLeft="300dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtFuelCD" />
+            <TextView
+                android:id="@+id/txtFuelCD"
+                android:layout_width="72dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="280dp"
+                android:layout_marginTop="10dp"
+                android:text="Fuel:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtGearCD" />
 
-        <TextView
-            android:id="@+id/txtLisenceCD"
-            android:layout_width="100dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="280dp"
-            android:layout_marginTop="10dp"
-            android:text="License plates:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtSeatCD" />
+            <TextView
+                android:id="@+id/txtFuelCDS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="290dp"
+                android:layout_marginLeft="300dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtGearCD" />
 
-        <TextView
-            android:id="@+id/txtLisenceCDS"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="290dp"
-            android:layout_marginLeft="300dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtSeatCD" />
+            <TextView
+                android:id="@+id/txtSeatCD"
+                android:layout_width="72dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="280dp"
+                android:layout_marginTop="10dp"
+                android:text="Seat:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtFuelCD" />
 
-        <TextView
-            android:id="@+id/txtCostByKmCD"
-            android:layout_width="100dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="280dp"
-            android:layout_marginTop="25dp"
-            android:text="Cost by km:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtLisenceCD" />
+            <TextView
+                android:id="@+id/txtSeatCDS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="290dp"
+                android:layout_marginLeft="300dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtFuelCD" />
 
-        <TextView
-            android:id="@+id/txtCostByKmCDS"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="290dp"
-            android:layout_marginLeft="300dp"
-            android:layout_marginTop="25dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtLisenceCD" />
+            <TextView
+                android:id="@+id/txtLisenceCD"
+                android:layout_width="100dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="280dp"
+                android:layout_marginTop="10dp"
+                android:text="License plates:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtSeatCD" />
 
-        <TextView
-            android:id="@+id/txtCostByDateCD"
-            android:layout_width="100dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="280dp"
-            android:layout_marginTop="10dp"
-            android:text="Cost by date:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtCostByKmCD" />
+            <TextView
+                android:id="@+id/txtLisenceCDS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="290dp"
+                android:layout_marginLeft="300dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtSeatCD" />
 
-        <TextView
-            android:id="@+id/txtCostByDateCDS"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="290dp"
-            android:layout_marginLeft="300dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtCostByKmCD" />
+            <TextView
+                android:id="@+id/txtCostByKmCD"
+                android:layout_width="100dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="280dp"
+                android:layout_marginTop="25dp"
+                android:text="Cost by km:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtLisenceCD" />
 
-        <Button
-            android:id="@+id/btnHireCar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="160dp"
-            android:layout_marginLeft="160dp"
-            android:layout_marginTop="44dp"
-            android:text="HIRE NOW"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtCostByDateCD" />
+            <TextView
+                android:id="@+id/txtCostByKmCDS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="290dp"
+                android:layout_marginLeft="300dp"
+                android:layout_marginTop="25dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtLisenceCD" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/txtCostByDateCD"
+                android:layout_width="100dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="280dp"
+                android:layout_marginTop="10dp"
+                android:text="Cost by date:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtCostByKmCD" />
+
+            <TextView
+                android:id="@+id/txtCostByDateCDS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="290dp"
+                android:layout_marginLeft="300dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtCostByKmCD" />
+
+            <Button
+                android:id="@+id/btnHireCar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="160dp"
+                android:layout_marginLeft="160dp"
+                android:layout_marginTop="8dp"
+                android:text="HIRE NOW"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtCostByDateCD" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnHireCar"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </FrameLayout>
