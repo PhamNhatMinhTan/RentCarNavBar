@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         helper = new DBOpenHepler(this);
         userDAO = new UserDAO(this);
 
+//        helper.insert();
         manager = getFragmentManager();
         int size = inv.getAllInvoice().size();
 //        User user = new User("1312asd", "0868772887", "Tran Minh Thien", "Thientm@gmail.com", "AG",

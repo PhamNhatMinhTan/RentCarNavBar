@@ -125,25 +125,25 @@ public class DBOpenHepler extends SQLiteOpenHelper {
         writeData("INSERT INTO gear VALUES(NULL,'Manual')");
         writeData("INSERT INTO gear VALUES(NULL,'Automatic')");
 
-        //vehicle(v_id INTEGER PRIMARY KEY AUTOINCREMENT,v_name TEXT,v_licensePlate TEXT, " +
-        //                " v_seat INTEGER, v_costPerDate FLOAT, v_costPerKm FLOAT, v_image TEXT, v_status INTEGER, version INTEGER, " +
-        //                " branch INTEGER, color INTEGER, fuel INTEGER, gear INTEGER); ";
-//        writeData("INSERT INTO vehicle VALUES(NULL,'Toyota Altis 1.8G CVT','65A1-262.95',4,50,3,'toyota_altis_black',1,6,3,1,1,2)");
-//        writeData("INSERT INTO vehicle VALUES(NULL,'Totota Altis 1.8G CVT','65A1-662.85',4,50,3,'toyota_altis_red',1,6,3,2,1,2)");
-//        writeData("INSERT INTO vehicle VALUES(NULL,'Toyota Hiace','65A1-656.36',16,70,5,'toyota_hiace_silver',1,3,3,3,2,1)");
-//        writeData("INSERT INTO vehicle VALUES(NULL,'Toyota Hiace','65A1-215.61',16,70,5,'toyota_hiace_white',1,3,3,3,2,1)");
-//        writeData("INSERT INTO vehicle VALUES(NULL,'Honda City','65B1-621.21',4,40,3.5,'honda_city_darkblue',1,5,4,5,1,2)");
-//        writeData("INSERT INTO vehicle VALUES(NULL,'Honda City','65B1-356.27',4,40,3.5,'honda_city_silver',1,5,4,3,1,2)");
-//        writeData("INSERT INTO vehicle VALUES(NULL,'Honda Civic','65B1-624.65',4,45,3.5,'honda_civic_white',1,5,4,2,1,2)");
-//        writeData("INSERT INTO vehicle VALUES(NULL,'Honda Civic','65B1-294.82',4,45,3.5,'honda_civic_blue',1,5,4,6,1,2)");
-//        writeData("INSERT INTO vehicle VALUES(NULL,'BMW X7','65B1-354.64',4,120,7.5,'bmw_x7_blue',1,4,1,6,1,2)");
-//        writeData("INSERT INTO vehicle VALUES(NULL,'BMW X7','65B1-854.66',4,120,7.5,'bmw_x7_white',1,4,1,2,1,2)");
-//        writeData("INSERT INTO vehicle VALUES(NULL,'BMW 740','65B1-455.22',4,130,8.5,'bmw_740_white',1,5,1,2,1,2)");
-//        writeData("INSERT INTO vehicle VALUES(NULL,'BMW 740','65B1-665.342',4,130,8.5,'bmw_740_black',1,5,1,1,1,2)");
-//        writeData("INSERT INTO vehicle VALUES(NULL,'Porscher 718','65B1-112.94',4,150,9.5,'porscher_718_blue',1,5,2,6,1,2)");
-//        writeData("INSERT INTO vehicle VALUES(NULL,'Porscher 718','65B1-632.24',4,150,9.5,'porscher_718_grey',1,5,2,7,1,2)");
-//        writeData("INSERT INTO vehicle VALUES(NULL,'Porscher J1 Taycan','65B1-647.24',4,140,8.5,'j1_taycan_blue',1,4,2,6,1,2)");
-//        writeData("INSERT INTO vehicle VALUES(NULL,'Porscher J1 Taycan','65B1-632.88',4,140,8.5,'j1_taycan_white',1,4,2,2,1,2)");
+//        //vehicle(v_id INTEGER PRIMARY KEY AUTOINCREMENT,v_name TEXT,v_licensePlate TEXT, " +
+//                        " v_seat INTEGER, v_costPerDate FLOAT, v_costPerKm FLOAT, v_image TEXT, v_status INTEGER, version INTEGER, " +
+//                        " branch INTEGER, color INTEGER, fuel INTEGER, gear INTEGER); ";
+        writeData("INSERT INTO vehicle VALUES(NULL,'Toyota Altis 1.8G CVT','65A1-262.95',4,50,3,'toyota_altis_black',1,6,3,1,1,2)");
+        writeData("INSERT INTO vehicle VALUES(NULL,'Totota Altis 1.8G CVT','65A1-662.85',4,50,3,'toyota_altis_red',1,6,3,2,1,2)");
+        writeData("INSERT INTO vehicle VALUES(NULL,'Toyota Hiace','65A1-656.36',16,70,5,'toyota_hiace_silver',1,3,3,3,2,1)");
+        writeData("INSERT INTO vehicle VALUES(NULL,'Toyota Hiace','65A1-215.61',16,70,5,'toyota_hiace_white',1,3,3,3,2,1)");
+        writeData("INSERT INTO vehicle VALUES(NULL,'Honda City','65B1-621.21',4,40,3.5,'honda_city_darkblue',1,5,4,5,1,2)");
+        writeData("INSERT INTO vehicle VALUES(NULL,'Honda City','65B1-356.27',4,40,3.5,'honda_city_silver',1,5,4,3,1,2)");
+        writeData("INSERT INTO vehicle VALUES(NULL,'Honda Civic','65B1-624.65',4,45,3.5,'honda_civic_white',1,5,4,2,1,2)");
+        writeData("INSERT INTO vehicle VALUES(NULL,'Honda Civic','65B1-294.82',4,45,3.5,'honda_civic_blue',1,5,4,6,1,2)");
+        writeData("INSERT INTO vehicle VALUES(NULL,'BMW X7','65B1-354.64',4,120,7.5,'bmw_x7_blue',1,4,1,6,1,2)");
+        writeData("INSERT INTO vehicle VALUES(NULL,'BMW X7','65B1-854.66',4,120,7.5,'bmw_x7_white',1,4,1,2,1,2)");
+        writeData("INSERT INTO vehicle VALUES(NULL,'BMW 740','65B1-455.22',4,130,8.5,'bmw_740_white',1,5,1,2,1,2)");
+        writeData("INSERT INTO vehicle VALUES(NULL,'BMW 740','65B1-665.342',4,130,8.5,'bmw_740_black',1,5,1,1,1,2)");
+        writeData("INSERT INTO vehicle VALUES(NULL,'Porscher 718','65B1-112.94',4,150,9.5,'porscher_718_blue',1,5,2,6,1,2)");
+        writeData("INSERT INTO vehicle VALUES(NULL,'Porscher 718','65B1-632.24',4,150,9.5,'porscher_718_grey',1,5,2,7,1,2)");
+        writeData("INSERT INTO vehicle VALUES(NULL,'Porscher J1 Taycan','65B1-647.24',4,140,8.5,'j1_taycan_blue',1,4,2,6,1,2)");
+        writeData("INSERT INTO vehicle VALUES(NULL,'Porscher J1 Taycan','65B1-632.88',4,140,8.5,'j1_taycan_white',1,4,2,2,1,2)");
     }
     public void insertUser(){
 

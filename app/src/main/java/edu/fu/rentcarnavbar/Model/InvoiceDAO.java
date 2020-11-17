@@ -72,7 +72,6 @@ public class InvoiceDAO extends DBOpenHepler{
             } while (cursor.moveToNext());
         }
         return list;
-
     }
 
     public Invoice GetInvoiceById (int id){

@@ -238,4 +238,54 @@ public class VehicleDAO extends DBOpenHepler{
         //adapter.notifyDataSetChanged();
         return u;
     }
+    public Vehicle filterVehicleByID (int idBrand){
+        List<Vehicle> list = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = null;
+        cursor = db.query(TABLE_NAME, null, "branch = ?",
+                new String[] {String.valueOf(idBrand)}, null, null,
+                null);
+        cursor.moveToFirst();
+        Vehicle vehicle = new Vehicle(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3),
+                cursor.getFloat(4), cursor.getFloat(5), cursor.getString(6),
+                cursor.getInt(7), cursor.getInt(8), cursor.getInt(9), cursor.getInt( 10),cursor.getInt( 11),cursor.getInt( 12));
+        return vehicle;
+    }
+
+    public List<Vehicle> filterByBrand (int idBrand){
+        List<Vehicle> list = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+
+        Cursor cursor = null;
+        cursor = db.query(TABLE_NAME, null, "branch = ?",
+                new String[] {String.valueOf(idBrand)}, null, null,
+                null);
+        if(cursor.moveToFirst()) {
+            do {
+                Vehicle vehicle = new Vehicle(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3),
+                        cursor.getFloat(4), cursor.getFloat(5), cursor.getString(6),
+                        cursor.getInt(7), cursor.getInt(8), cursor.getInt(9), cursor.getInt( 10),cursor.getInt( 11),cursor.getInt( 12));
+                list.add(vehicle);
+            } while (cursor.moveToNext());
+        }
+        return list;
+    }
+    public List<Vehicle> searchVehicle (String nameV){
+        List<Vehicle> list = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+
+        Cursor cursor = null;
+        cursor = db.rawQuery("SELECT * FROM vehicle WHERE v_name LIKE '%" + nameV + "%'", null);
+        if(cursor.moveToFirst()) {
+            do {
+                Vehicle vehicle = new Vehicle(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3),
+                        cursor.getFloat(4), cursor.getFloat(5), cursor.getString(6),
+                        cursor.getInt(7), cursor.getInt(8), cursor.getInt(9), cursor.getInt( 10),cursor.getInt( 11),cursor.getInt( 12));
+                list.add(vehicle);
+            } while (cursor.moveToNext());
+        }
+        return list;
+    }
+
+    //int v_id, String v_name , String v_licensePlate, int v_seat, float v_costPerDate, float v_costPerKm, String v_image, int v_status, int version, int branch, int color, int fuel, int gear
 }
