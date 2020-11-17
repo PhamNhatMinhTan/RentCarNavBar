@@ -100,7 +100,7 @@ public class DBOpenHepler extends SQLiteOpenHelper {
      */
     public void insert(){
         writeData("INSERT INTO branch VALUES(NULL,'BMW', 'bmw')");
-        writeData("INSERT INTO branch VALUES(NULL,'Porscher', 'porsche')");
+        writeData("INSERT INTO branch VALUES(NULL,'Porsche', 'porsche')");
         writeData("INSERT INTO branch VALUES(NULL,'Toyota', 'toyota')");
         writeData("INSERT INTO branch VALUES(NULL,'Honda', 'honda')");
 

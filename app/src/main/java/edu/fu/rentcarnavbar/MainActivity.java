@@ -70,9 +70,8 @@ public class MainActivity extends AppCompatActivity {
 
         manager = getFragmentManager();
         int size = inv.getAllInvoice().size();
-//        User user = new User("1312asd", "0868772887", "Tran Minh Thien", "Thientm@gmail.com", "AG",
-//                "352506532", 2);
-//        userDAO.insert(user);
+
+
 
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
