@@ -42,12 +42,17 @@ public class MainActivity extends AppCompatActivity {
     DBOpenHepler helper;
     UserDAO userDAO;
     static FragmentManager manager;
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
-
         setContentView(R.layout.activity_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);
         inv = new InvoiceDAO(this);
@@ -61,8 +66,13 @@ public class MainActivity extends AppCompatActivity {
         //version = new VersionDAO(this);
         vehicleDAO = new VehicleDAO(this);
         helper = new DBOpenHepler(this);
+        userDAO = new UserDAO(this);
 
         manager = getFragmentManager();
+        int size = inv.getAllInvoice().size();
+//        User user = new User("1312asd", "0868772887", "Tran Minh Thien", "Thientm@gmail.com", "AG",
+//                "352506532", 2);
+//        userDAO.insert(user);
 
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)

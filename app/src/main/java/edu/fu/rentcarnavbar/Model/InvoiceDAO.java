@@ -89,4 +89,52 @@ public class InvoiceDAO extends DBOpenHepler{
 
         return invoice;
     }
+
+    public List<Invoice> getAllInvoice() {
+        //khoi tao list invoice
+        List<Invoice> list = new ArrayList<>();
+        String sqlQuery = " SELECT * FROM " + TABLE_NAME;
+        Cursor result = null;
+
+        try {
+            SQLiteDatabase db = this.getReadableDatabase();
+            result = db.rawQuery(sqlQuery, null);
+            result.moveToFirst();
+
+            if (result.moveToFirst()){
+                do {
+                    //add data to object
+                    Invoice invoice = new Invoice();
+                    invoice.setId(result.getInt(0));
+                    invoice.setDateStart(result.getString(1));
+                    invoice.setDateEnd(result.getString(2));
+                    invoice.setTotal(result.getDouble(3));
+                    invoice.setName(result.getString(4));
+                    invoice.setPhone(result.getString(5));
+                    invoice.setIdentity(result.getString(6));
+                    invoice.setStatus(result.getInt(7));
+                    invoice.setU_id(result.getString(8));
+                    invoice.setV_id(result.getInt(9));
+                    list.add(invoice);
+                } while (result.moveToNext());
+            }
+        } finally {
+            result.close();
+        }
+
+        return list;
+    }
+
+    public void updateInvoice(String id, String i_status) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        if(i_status == "")
+        //put values to context value
+        values.put(status, i_status);
+
+        db.update("user", values, "u_id = ?", new String[] { id });
+        db.close();
+    }
+
 }

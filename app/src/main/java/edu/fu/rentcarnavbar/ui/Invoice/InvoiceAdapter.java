@@ -77,8 +77,6 @@ public class InvoiceAdapter extends BaseAdapter {
 
         image.setImageResource(Integer.parseInt(invoiceList.getImage()));
 
-        //img.setImageResource(invoice.getImg());
-
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -40,7 +40,7 @@ public class DetailInvoiceFragment extends Fragment {
         gearDAO = new GearDAO(getActivity().getBaseContext());
 
         int v_id = invoiceDAO.GetInvoiceById(value).getV_id();
-        TextView txtName = view.findViewById(R.id.txtNameCar_iv);
+        TextView txtName = view.findViewById(R.id.txtNameCar_iv_emp);
         TextView txtGear = view.findViewById(R.id.txtGear_iv);
         TextView txtFuel = view.findViewById(R.id.txtFuel_iv);
         TextView txtlicensePlate = view.findViewById(R.id.txtlicensePlate_iv);

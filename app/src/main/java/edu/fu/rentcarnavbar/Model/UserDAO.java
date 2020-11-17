@@ -96,7 +96,6 @@ public class UserDAO extends DBOpenHepler {
         values.put("u_identity", user.getIdentity());
         values.put("u_status", user.getStatus());
 
-
         //insert vao bang
         db.insert("user", null, values);
 

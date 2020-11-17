@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/txtNameCar_iv_emp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView_emp"
+        android:layout_width="210dp"
+        android:layout_height="115dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/txtNameCar_emp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView_emp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtCusName_emp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:text="Name: "
+        app:layout_constraintStart_toEndOf="@+id/imageView_emp"
+        app:layout_constraintTop_toBottomOf="@+id/txtNameCar_emp" />
+
+    <TextView
+        android:id="@+id/txtDateStart_emp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:text="Date Start: "
+        app:layout_constraintStart_toEndOf="@+id/imageView_emp"
+        app:layout_constraintTop_toBottomOf="@+id/txtCusName_emp" />
+
+    <TextView
+        android:id="@+id/txtDateEnd_emp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:text="Date End: "
+        app:layout_constraintStart_toEndOf="@+id/imageView_emp"
+        app:layout_constraintTop_toBottomOf="@+id/txtDateStart_emp" />
+
+    <TextView
+        android:id="@+id/txtStatus_emp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:text="Status"
+        app:layout_constraintStart_toEndOf="@+id/imageView_emp"
+        app:layout_constraintTop_toBottomOf="@+id/txtDateEnd_emp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
