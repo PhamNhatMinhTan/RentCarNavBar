@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import edu.fu.rentcarnavbar.MainActivity;
 import edu.fu.rentcarnavbar.Model.VehicleDAO;
 import edu.fu.rentcarnavbar.Object.Branch;
 import edu.fu.rentcarnavbar.Object.Color;
@@ -52,7 +53,7 @@ public class carDetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_car_detail, container, false);
 
         Bundle bundle = getArguments();
-        int value = bundle.getInt("userid");
+        final int value = bundle.getInt("id");
 
         vehicleDAO = new VehicleDAO(getActivity().getBaseContext());
         Vehicle c = vehicleDAO.GetVehicleById(value);
@@ -127,6 +128,16 @@ public class carDetailFragment extends Fragment {
 
         costByDate = view.findViewById(R.id.txtCostByDateCDS);
         costByDate.setText(c.getV_costPerDate()+"");
+        btnHire = (Button) view.findViewById(R.id.btnHireCar);
+
+
+
+        btnHire.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.rentalCar(value);
+            }
+        });
         return view;
     }
 

@@ -1,5 +1,6 @@
 package edu.fu.rentcarnavbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -8,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.FragmentManager;
 
 import android.app.FragmentTransaction;
+import android.util.Log;
 import android.view.Window;
 
 import androidx.navigation.NavController;
@@ -28,6 +30,7 @@ import edu.fu.rentcarnavbar.Model.UserDAO;
 import edu.fu.rentcarnavbar.Model.VehicleDAO;
 import edu.fu.rentcarnavbar.Object.User;
 import edu.fu.rentcarnavbar.ui.Invoice.DetailInvoiceFragment;
+import edu.fu.rentcarnavbar.ui.home.RentalFragment;
 import edu.fu.rentcarnavbar.ui.home.carDetailFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -42,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     DBOpenHepler helper;
     UserDAO userDAO;
     static FragmentManager manager;
-
+    static String userID;
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
@@ -80,6 +83,9 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+        Intent intent = MainActivity.this.getIntent();
+        Bundle bundle = new Bundle();
+        userID= intent.getStringExtra("id");
     }
 
     public static void change(int invoice_Id){
@@ -97,12 +103,26 @@ public class MainActivity extends AppCompatActivity {
     public static void deatailCar(int id){
         carDetailFragment carDetail = new carDetailFragment();
         Bundle bundle = new Bundle();
-        bundle.putInt("userid", id);
+        bundle.putInt("id", id);
         carDetail.setArguments(bundle);
 
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.nav_host_fragment, carDetail);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+    public static void rentalCar(int v_id){
+        RentalFragment rentalFragment = new RentalFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("uid", userID);
+        Log.w("UID", userID);
+        bundle.putInt("vid", v_id);
+        rentalFragment.setArguments(bundle);
+
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.nav_host_fragment, rentalFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+
     }
 }

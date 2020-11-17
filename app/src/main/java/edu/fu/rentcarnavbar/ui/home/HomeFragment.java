@@ -38,7 +38,7 @@ public class HomeFragment extends Fragment {
         DBOpenHepler db = new DBOpenHepler(getActivity().getBaseContext());
         //db.insert();
         repository = new VehicleDAO(getActivity().getBaseContext());
-
+        //db.insertUser();
         lstCar = new ArrayList<>();
         lstCar = repository.getCarList();
         listCarAdapter = new CarAdapter(getActivity().getBaseContext(), R.layout.invoke_item, lstCar);

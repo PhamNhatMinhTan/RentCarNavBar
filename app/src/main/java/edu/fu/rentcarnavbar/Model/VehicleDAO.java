@@ -77,7 +77,6 @@ public class VehicleDAO extends DBOpenHepler{
             cursor.close();
         }
     }
-
     /**
      * Write into DB
      * @param sqlString
@@ -214,5 +213,29 @@ public class VehicleDAO extends DBOpenHepler{
         }
         //adapter.notifyDataSetChanged();
         return lst;
+    }
+    /**
+     * list of Fuel
+     * @return
+     */
+    public User getUser(String uid){
+        User u = new User();
+        Cursor cursor = getData("SELECT * FROM user WHERE u_id LIKE "+uid+"");
+        while (cursor.moveToNext())
+        {
+            String id = cursor.getString(0);
+            String phone = cursor.getString(1);
+            String name = cursor.getString(2);
+            String mail = cursor.getString(3);
+            String address = cursor.getString(4);
+            String iden = cursor.getString(5);
+            int status = cursor.getInt(6);
+            ////" CREATE TABLE IF NOT EXISTS user(u_id TEXT PRIMARY KEY, u_phone TEXT, " +
+            ////                " u_name TEXT, u_email TEXT, u_address TEXT, u_identity TEXT, " +
+            ////                " u_status INTEGER); ";
+            u=(new User(id, phone, name, mail, address, iden, status));
+        }
+        //adapter.notifyDataSetChanged();
+        return u;
     }
 }

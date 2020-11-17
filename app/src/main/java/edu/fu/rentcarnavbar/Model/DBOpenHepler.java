@@ -145,6 +145,15 @@ public class DBOpenHepler extends SQLiteOpenHelper {
 //        writeData("INSERT INTO vehicle VALUES(NULL,'Porscher J1 Taycan','65B1-647.24',4,140,8.5,'j1_taycan_blue',1,4,2,6,1,2)");
 //        writeData("INSERT INTO vehicle VALUES(NULL,'Porscher J1 Taycan','65B1-632.88',4,140,8.5,'j1_taycan_white',1,4,2,2,1,2)");
     }
+    public void insertUser(){
+
+//" CREATE TABLE IF NOT EXISTS user(u_id TEXT PRIMARY KEY, u_phone TEXT, " +
+//                " u_name TEXT, u_email TEXT, u_address TEXT, u_identity TEXT, " +
+//                " u_status INTEGER); ";
+        writeData("INSERT INTO user VALUES('123','0923293006','My','my@gmail.com','130cmt8','123',1)");
+
+        //103359993404905969479
+    }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
