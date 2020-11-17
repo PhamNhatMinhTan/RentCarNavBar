@@ -15,6 +15,7 @@
             android:id="@+id/imgInvoiceDetail"
             android:layout_width="404dp"
             android:layout_height="149dp"
+            android:layout_marginTop="70dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

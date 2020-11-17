@@ -1,6 +1,7 @@
 package edu.fu.rentcarnavbar.Object;
 
-public class InvoiceList {
+public class
+InvoiceList {
     private int id;
     private String name;
     private String dateStart;
