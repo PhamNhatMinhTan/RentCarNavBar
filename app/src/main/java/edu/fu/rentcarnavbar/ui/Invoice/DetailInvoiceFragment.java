@@ -52,6 +52,7 @@ public class DetailInvoiceFragment extends Fragment {
         TextView txtTotal = view.findViewById(R.id.txtTotal_iv);
         TextView txtIdentity = view.findViewById(R.id.txtIdentity_iv);
         ImageView imageView = view.findViewById(R.id.imgInvoiceDetail);
+        //TextView txtStatus_iv = view.findViewById(R.id.txtStatus_iv_detail);
 
         txtName.setText(vehicleDAO.GetVehicleById(v_id).getV_name());
         txtlicensePlate.setText(vehicleDAO.GetVehicleById(v_id).getV_licensePlate());
@@ -64,10 +65,10 @@ public class DetailInvoiceFragment extends Fragment {
         txtIdentity.setText(invoiceDAO.GetInvoiceById(value).getIdentity());
         txtFuel.setText(fuelDAO.GetFuelById(vehicleDAO.GetVehicleById(v_id).getFuel()).getFuel());
         txtGear.setText(gearDAO.GetGearById(vehicleDAO.GetVehicleById(v_id).getGear()).getGear());
-
+        //txtStatus_iv.setText(invoiceDAO.GetInvoiceById(value).getStatus());
         String imageName = vehicleDAO.GetVehicleById(v_id).getV_image();
         int image = getContext().getResources().getIdentifier(imageName, "drawable", getContext().getPackageName());
-
+        //txtStatus_iv.setText(invoiceDAO.GetInvoiceById(value).getStatus());
         imageView.setImageResource(image);
         //TextView txt = view.findViewById(R.id.txtnameInvoice);
         //txt.setText(value);

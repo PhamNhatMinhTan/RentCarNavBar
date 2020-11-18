@@ -28,8 +28,13 @@ import edu.fu.rentcarnavbar.Model.GearDAO;
 import edu.fu.rentcarnavbar.Model.InvoiceDAO;
 import edu.fu.rentcarnavbar.Model.UserDAO;
 import edu.fu.rentcarnavbar.Model.VehicleDAO;
+import edu.fu.rentcarnavbar.Object.Invoice;
 import edu.fu.rentcarnavbar.Object.User;
+import edu.fu.rentcarnavbar.Object.Vehicle;
+import edu.fu.rentcarnavbar.ui.Invoice.ApproveInvoiceFragment;
 import edu.fu.rentcarnavbar.ui.Invoice.DetailInvoiceFragment;
+import edu.fu.rentcarnavbar.ui.Invoice.InvoiceFragment;
+import edu.fu.rentcarnavbar.ui.Invoice.emp_InvoiceAdapter;
 import edu.fu.rentcarnavbar.ui.home.RentalFragment;
 import edu.fu.rentcarnavbar.ui.home.carDetailFragment;
 
@@ -44,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
     VehicleDAO vehicleDAO;
     DBOpenHepler helper;
     UserDAO userDAO;
+
+    List<Vehicle> vehicles = new ArrayList<>();
+
     static FragmentManager manager;
     static String userID;
     @Override
@@ -71,7 +79,8 @@ public class MainActivity extends AppCompatActivity {
         helper = new DBOpenHepler(this);
         userDAO = new UserDAO(this);
 
-//        helper.insert();
+
+        helper.insert();
         manager = getFragmentManager();
         int size = inv.getAllInvoice().size();
 
@@ -99,6 +108,24 @@ public class MainActivity extends AppCompatActivity {
         transaction.commit();
     }
 
+    public static void goToApproveInvoice(int invoiceID) {
+        ApproveInvoiceFragment invoiceApprove = new ApproveInvoiceFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt("invoiceId", invoiceID);
+        invoiceApprove.setArguments(bundle);
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.nav_host_fragment, invoiceApprove);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+//    public static void goBackInvoiceList() {
+//        InvoiceFragment invoiceFragment = new InvoiceFragment();
+//        FragmentTransaction transaction = manager.beginTransaction();
+//        transaction.replace(R.id.nav_host_fragment, invoiceFragment);
+//        transaction.addToBackStack(null);
+//        transaction.commit();
+//    }
 
     public static void deatailCar(int id){
         carDetailFragment carDetail = new carDetailFragment();

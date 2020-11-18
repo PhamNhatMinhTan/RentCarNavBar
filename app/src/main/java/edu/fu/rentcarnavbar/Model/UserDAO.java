@@ -19,7 +19,7 @@ public class UserDAO extends DBOpenHepler {
     public UserDAO(@Nullable Context context) {
 
         super(context);
-        initData();
+        //initData();
     }
 
     @Override

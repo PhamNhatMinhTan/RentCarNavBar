@@ -15,7 +15,7 @@
             android:id="@+id/imgInvoiceDetail"
             android:layout_width="404dp"
             android:layout_height="149dp"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="85dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -249,17 +249,10 @@
             android:id="@+id/detailInvoiceHeader"
             android:layout_width="match_parent"
             android:layout_height="70dp"
+            android:background="#03A9F4"
+            app:cardBackgroundColor="#03A9F4"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="163dp" />
 
-        <Spinner
-            android:id="@+id/spinnerStatus"
-            android:layout_width="380dp"
-            android:layout_height="34dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="552dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

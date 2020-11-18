@@ -14,6 +14,7 @@ import org.w3c.dom.Text;
 
 import java.util.List;
 
+import edu.fu.rentcarnavbar.MainActivity;
 import edu.fu.rentcarnavbar.Model.InvoiceDAO;
 import edu.fu.rentcarnavbar.Model.UserDAO;
 import edu.fu.rentcarnavbar.Object.InvoiceList;
@@ -79,14 +80,24 @@ public class emp_InvoiceAdapter extends BaseAdapter {
             txtStatus.setTextColor(Color.DKGRAY);
         }
         else if(invoiceDAO.GetInvoiceById(invoiceList.getId()).getStatus() == 1){
-            status = "Renting";
-            txtStatus.setTextColor(Color.MAGENTA);
+            status = "Approved";
+            txtStatus.setTextColor(Color.GREEN);
         }
         else if(invoiceDAO.GetInvoiceById(invoiceList.getId()).getStatus() == 2){
-            status = "Rented";
+            status = "Returned";
             txtStatus.setTextColor(Color.LTGRAY);
+        } else if (invoiceDAO.GetInvoiceById(invoiceList.getId()).getStatus() == 3) {
+            status = "Rejected";
+            txtStatus.setTextColor(Color.RED);
         }
         txtStatus.setText(status);
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.change(invoiceList.getId());
+            }
+        });
 
         return convertView;
     }
