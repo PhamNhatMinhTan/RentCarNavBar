@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -88,6 +89,9 @@ public class RentalFragment extends Fragment {
 
         //uid="123";
         u = vehicleDAO.getUser(uid);
+        Log.w("UID RENTAL: ",u.getId()+"_");
+        Log.w("U NAME RENTAL: ",u.getName()+"_");
+
 
         imgCar = view.findViewById(R.id.imgRent);
         int iconResource = getActivity().getBaseContext().getResources().getIdentifier(c.getV_image(), "drawable", getActivity().getBaseContext().getPackageName());
@@ -130,7 +134,24 @@ public class RentalFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-//int id, String dateStart, String dateEnd, double total, String name, String phone, String identity, int status, String u_id, int v_id
+                //check null of age
+                if(TextUtils.isEmpty(userName.getText().toString().trim())){
+                    Toast.makeText(getActivity().getBaseContext(), "Invalid name. Enter again please.", Toast.LENGTH_SHORT).show();
+                    return;
+                }else if(TextUtils.isEmpty(userIden.getText().toString().trim())){
+                    Toast.makeText(getActivity().getBaseContext(), "Invalid identity. Enter again please.", Toast.LENGTH_SHORT).show();
+                    return;
+                }else if(TextUtils.isEmpty(userPhone.getText().toString().trim())){
+                    Toast.makeText(getActivity().getBaseContext(), "Invalid phone. Enter again please.", Toast.LENGTH_SHORT).show();
+                    return;
+                }else if(TextUtils.isEmpty(startdate.getText().toString().trim())){
+                    Toast.makeText(getActivity().getBaseContext(), "Invalid start date. Enter again please.", Toast.LENGTH_SHORT).show();
+                    return;
+                }else  if(TextUtils.isEmpty(enddate.getText().toString().trim())){
+                    Toast.makeText(getActivity().getBaseContext(), "Invalid end date. Enter again please.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 Invoice i = new Invoice(NULL,startdate.getText().toString(), enddate.getText().toString(), Double.parseDouble(totalAmount),userName.getText().toString(),userPhone.getText().toString(),userIden.getText().toString(),1,uid, vid);
 
                 invoiceDAO.InsertInvoice(i);
@@ -169,7 +190,7 @@ public class RentalFragment extends Fragment {
         Bundle args = new Bundle();
         args.putInt("year", calender.get(Calendar.YEAR));
         args.putInt("month", calender.get(Calendar.MONTH));
-        args.putInt("day", calender.get(Calendar.DAY_OF_MONTH));
+        args.putInt("day", calender.get(Calendar.DAY_OF_MONTH)+1);
         date.setArguments(args);
         /**
          * Set Call back to capture selected date
@@ -190,6 +211,7 @@ public class RentalFragment extends Fragment {
                     + "/" + String.valueOf(year);
             Log.w("date: ",d);
             startdate.setText(d);
+
         }
     };
 

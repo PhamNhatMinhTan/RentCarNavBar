@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -219,8 +220,8 @@ public class VehicleDAO extends DBOpenHepler{
      * @return
      */
     public User getUser(String uid){
-        User u = new User();
-        Cursor cursor = getData("SELECT * FROM user WHERE u_id LIKE "+uid+"");
+        User u = null;
+        Cursor cursor = getData("SELECT * FROM user WHERE u_id LIKE '"+uid+"'");
         while (cursor.moveToNext())
         {
             String id = cursor.getString(0);
@@ -233,6 +234,8 @@ public class VehicleDAO extends DBOpenHepler{
             ////" CREATE TABLE IF NOT EXISTS user(u_id TEXT PRIMARY KEY, u_phone TEXT, " +
             ////                " u_name TEXT, u_email TEXT, u_address TEXT, u_identity TEXT, " +
             ////                " u_status INTEGER); ";
+            //Log.w("U_NAme in VenDAO: ", name+"_");
+            //Log.w("U_Phone in VenDAO: ", phone+"_");
             u=(new User(id, phone, name, mail, address, iden, status));
         }
         //adapter.notifyDataSetChanged();
