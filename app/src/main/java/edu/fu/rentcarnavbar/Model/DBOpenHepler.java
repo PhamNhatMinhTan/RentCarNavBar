@@ -150,8 +150,9 @@ public class DBOpenHepler extends SQLiteOpenHelper {
 //" CREATE TABLE IF NOT EXISTS user(u_id TEXT PRIMARY KEY, u_phone TEXT, " +
 //                " u_name TEXT, u_email TEXT, u_address TEXT, u_identity TEXT, " +
 //                " u_status INTEGER); ";
-        writeData("INSERT INTO user VALUES('123','0923293006','My','my@gmail.com','130cmt8','123',1)");
 
+        //writeData("INSERT INTO user VALUES('123','0923293006','My','my@gmail.com','130cmt8','123',1)");
+        writeData("UPDATE user SET u_name = 'Vo Dang Uyen My', u_phone='0923293001' WHERE u_id LIKE '103359993404905969479'");
         //103359993404905969479
     }
 
